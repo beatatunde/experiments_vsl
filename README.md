@@ -16,3 +16,10 @@ the folders are copies of pavlovia's github folders
     VSL_102_corrected: only #4 is corrected
 
     VSL_102_new: new foil pairs to control for relative shape positions
+
+2005
+    note that the jspsych codes here are using the new jspsych 7.3.4 version, from the jspsych folder
+
+    VSL_2005_exp1_v02_local: locally runnable experiment with experiment 1 from the 2005 paper
+
+    VSL_2005_exp1_v02_doubletraining: same as above, but running on pavlovia with double training
