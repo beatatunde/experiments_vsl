@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>VSL Experiment</title>
+        <script src="jspsych-6.1.0/jspsych.js"></script>
+        <script src="jspsych-6.1.0/plugins/jspsych-html-keyboard-response.js"></script>
+
+        <script src="jspsych-6.1.0/plugins/jspsych-html-button-response.js"></script>
+        <script src="jspsych-6.1.0/plugins/jspsych-survey-html-form.js"></script>
+        <script src="jspsych-6.1.0/plugins/jspsych-survey-text.js"></script>
+
+        <script src="jspsych-vsl-grid-attention-check.js"></script>
+        <script src="jspsych-vsl-grid-scene_snap.js"></script>
+        <script src="snap.svg.js"></script>
+        <script src="detect.js"></script>
+
+
+ 		    <script src="jspsych-6.1.0/plugins/jspsych-fullscreen.js"></script>
+        <link href="jspsych-6.1.0/css/jspsych.css" rel="stylesheet" type="text/css"></link>
+        <script type="text/javascript" src="familiarization_1_jav.js"></script>
+        <script type="text/javascript" src="test_1.js"></script>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		    <script type="text/javascript" src="lib/jspsych-pavlovia-3.1.0.js"></script>
+    </head>
+    <body></body>
+    <script>
+
+// type="text/javascript" src="lib/vendors/jquery-2.2.0.min.js">
+
+/* VSL 1
+jsPSych implementation of Experiment 1 from: Fiser, J., & Aslin, R. N. (2001). Unsupervised Statistical Learning of Higher-Order Spatial Structures from Visual Scenes. Psychological Science, 12(6), 499-504. doi: 10.1111/1467-9280.00392
+
+Phase 1 - Familiarization: presents stream of 6 element scenes.
+Uses scene structures stored in an array in familiarization.js. This is based on the original Matlab file, therefore indexing starts from 1 there. Fixes for that are foung throughout the script. Phase 1 is followed by a 2 minutes break.
+
+Phase 2 - 2-alternative forced choice task
+Uses test scene strucutre stored in an array in test_1.js. Same indexing issue and fix as Phase 1.
+*/
+
+	// set paramters for all VSL scenes (familiarization and test)
+	var global_image_size = 200;
+	var global_line_px = 3;
+	var global_post_trial_gap = 1000;
+	var user_browser = (detect.parse(navigator.userAgent)).browser.family;
+
+	// get info about participants from prolific
+	var participant = jsPsych.data.getURLVariable('participant');
+    var session  = jsPsych.data.getURLVariable('session');
+
+
+    var timeline = []
+
+    /* init connection with pavlovia.org */
+	var pavlovia_init = {
+		type: "pavlovia",
+		command: "init"
+	};
+	timeline.push(pavlovia_init);
+
+
+    var redirect_browser = {
+        type: 'html-button-response',
+        stimulus: '<p style="text-align: justify;margin-left: 15%; margin-right:15%"> Unfortunatly, your browser is not supported. ' +
+        ' Please use Google Chrome, Safari or Opera to run this experiment. ' +
+        ' If you have any questions about this, please email the experimenter at szabo_beata-tunde@phd.ceu.edu ' +
+        ' You can now close this window/tab </p>',
+        choices: []
+    };
+
+        var redirect_mobile = {
+        type: 'html-button-response',
+        stimulus: '<p style="text-align: justify;margin-left: 15%; margin-right:15%"> Unfortunatly, this study cannot be completed on mobile devices. ' +
+        ' Please use a desktop computer or laptop. ' +
+        ' If you have any questions about this, please email the experimenter at szabo_beata-tunde@phd.ceu.edu ' +
+        ' You can now close this window/tab </p>',
+        choices: []
+    };
+
+
+    // exlcude participant using edge or internet explorer
+    //if (user_browser == "Firefox") {
+        // pass
+    //}
+    if (user_browser == "Chrome") {
+        // pass
+    } else if (user_browser == "Safari") {
+        // pass
+    } else if (user_browser == "Opera") {
+        // pass
+    }else {
+        timeline.push(redirect_browser);
+    };
+
+
+    if (/Mobi|Android/i.test(navigator.userAgent)) {
+        timeline.push(redirect_mobile);
+    }
+
+
+
+
+    // enter fullscreen mode
+    timeline.push({
+  		type: 'fullscreen',
+  		fullscreen_mode: true,
+  		post_trial_gap: 1,
+	});
+
+    var welcome_trial = {
+        type: 'html-button-response',
+        stimulus: '<p style="text-align: justify;margin-left: 15%; margin-right:15%">You are participating in an experiment at the Vision Lab of the Department of Cognitive Science, Central European University. '+
+        ' One of our main questions is what kind of representations we can create about our visual environment and how these representations influence our behavior. '+
+        'At our lab we use multiple methods, for example behavioral experiments and computational models. '+
+        'In this experiment you will observe scenes consisting of abstract shapes and answer simple questions about them. <br><br>'+
+      	'At the beginning and throughout the experiment you will receive precise information about what to do. The experiment takes about 15 minutes in total. <br><br>'+
+        'The test is voluntary, and you can withdraw your participation at any time. We treat your personal information confidentially. <br>'+
+        'Only those people who work on this research project have access to your data. We will work with group level statistics. We will only report the results of the group in scientific publications and conferences. '+
+        'This research was approved by the Hungarian Psychological Research Ethics Committee.<br><br>'+
+        'If you have any further questions about the study, you can contact the experimenter, Beáta Tünde Szabó, PhD Student. Contact: 1051 Nádor u. 11. E-mail: szabo_beata-tunde@phd.ceu.edu <br><br>'+
+        'By pressing the button below you indicate that you read this information, found it sufficent, and you consent to participate in the experiment. <br><br> </p>',
+        choices: ['I consent to participate in the experiment']
+    };
+	timeline.push(welcome_trial)
+
+
+    var survey = {
+        type: 'survey-html-form',
+        preamble: 'Before you start the experiment, please answer these non-identifying demographic questions. <br> These questions are not a screener. <br><br><br>',
+        html: '<p><label for="Age">Age:</label> <input name="Age" id="Age" type="text" required/>  <br><br> </p>' +
+         '<p> Gender:</label> </p>'+
+         '<div> <input type="radio" id="Female" name="gender" value="Female" checked> <label for="Female">Female</label>'+
+         '&emsp;<input type="radio" id="Male" name="gender" value="Male"><label for="Male">Male</label>'+
+         '&emsp;<input type="radio" id="Other" name="gender" value="Other"><label for="Other"></label>' +
+         '<input type="text" name="gender_other" /> </div> <br><br>',
+        button_label:['Continue to the instructions']
+    };
+    timeline.push(survey)
+
+
+	var instructions_fam = {
+    	type: 'html-button-response',
+    	stimulus: '<p style="text-align: justify;margin-left: 15%; margin-right:15%"> This is your practice session. You will see a checkerboard with random simple shapes ' +
+    	'appearing in different positions in the checkerboard. Your task is simply to observe ' +
+    	'the patterns so that you would be able to answer some questions about the sequence ' +
+    	'after the practice session.  The session will last for about 8 minutes.  Please, pay ' +
+    	'attention to EACH display! ' +
+    	'<br><br>' +
+    	'Occasionally, there will be an attention check asking you to press the spacebar. ',
+        choices: ['Start the experiment.']
+    }
+	timeline.push(instructions_fam)
+
+
+// Attention Check - START /////////////////////////////////////////////////
+	var positions = [
+		[0,0], [0,1], [0,2],
+		[1,0], [1,2],
+		[2,0], [2,1], [2,2],
+	];
+
+	// creats and displays a random attention check scene
+	var attention_trial = {
+		type: 'vsl-grid-attention-check',
+		stimuli: function() {
+			var this_att_check = [
+				[0,0,0],
+				[0,"img/attention.png",0],
+				[0,0,0]
+				];
+			var this_postions = jsPsych.randomization.sampleWithoutReplacement(positions, 5);
+			for(let l=0; l < this_postions.length; l++) {
+				this_att_check[this_postions[l][0]][this_postions[l][1]] = "img/square.png"
+				}
+				return this_att_check;
+			},
+		image_size: [global_image_size, global_image_size],
+		line_px: global_line_px,
+		trial_duration: 3000,
+		post_trial_gap: 0,
+		choices: [' '],
+		stimulus_duration: 2000
+	};
+
+	// loops attention check scenes until spacbar was pressed
+	var attention_loop = {
+	    timeline: [attention_trial],
+	    loop_function: function(data){
+	        if(jsPsych.pluginAPI.convertKeyCharacterToKeyCode(' ') == data.values()[0].key_press){
+	            return false;
+	        } else {
+	            return true;
+	        }
+	    }
+	};
+
+	// add 1 second blank screen as iti between pressing of space bar and next VSL scene
+	var iti_trial = {
+    	type: 'html-keyboard-response',
+    	stimulus: ' ',
+    	choices: jsPsych.NO_KEYS,
+    	trial_duration: 1000,
+	};
+
+	// this needs to be pushed to the timeline to implement a full attention check
+	var attention_check = {
+		timeline: [attention_loop, iti_trial]
+	};
+// Attention Check - END  //////////////////////////////////////////////////
+
+
+// PAHSE 1 - Familiarization   START ////////////////////////////////////////
+	var scene_array = [];
+
+	var fam_scenes = familiarization_scenes; // array from familiarization.js file
+
+	//for debugging
+	// var fam_scenes = [
+	// 	[1,1,1,2,1,3,3,2,5],
+	// 	[1,1,2,2,1,3,3,2,5],
+	// 	[1,1,1,2,1,4,3,2,5]
+	// ]
+
+	var images = ["img/obj1.png", "img/obj2.png", "img/obj3.png", "img/obj4.png", "img/obj5.png", "img/obj6.png", "img/obj7.png", "img/obj8.png", "img/obj9.png", "img/obj10.png", "img/obj11.png", "img/obj12.png"]
+
+	var image_switchboard = jsPsych.randomization.repeat(images, 1);
+
+	var word_decode = [
+		[], // because the original file indexes from 1 not 0
+		[0, 1, 0, 1], // shape ID is minus 1 compared to Matlab version because of indexing
+		[2, 3, 0, 1],
+		[6, 7, 1, 0],
+		[8, 9, 1, 0],
+		[4, 5, -1, 1],
+		[10, 11, 1, 1]
+	];
+
+	var scene = [] // I don not need this anymore, for experimental control maybe for storing?
+	var fam_seq = []
+
+	var trainingLength = fam_scenes.length
+	var trainingSeq_random = jsPsych.randomization.shuffle([...Array(trainingLength).keys()])
+	for ( let j = 0; j < fam_scenes.length; j++) {
+		i = trainingSeq_random[j];
+		fam_seq[j] = fam_scenes[i];
+		var this_scene = [
+			[0,0,0],
+			[0,0,0],
+			[0,0,0]
+		];
+
+		this_word = word_decode[fam_scenes[i][2]]; // get first word
+		this_scene[fam_scenes[i][1] - 1][fam_scenes[i][0] - 1] = image_switchboard[this_word[0]] // place first letter of first word on its position
+		this_scene[fam_scenes[i][1] + this_word[3] - 1][fam_scenes[i][0] + this_word[2] - 1] = image_switchboard[this_word[1]] // place second letter of word in its position
+
+		this_word = word_decode[fam_scenes[i][5]]; // get second word
+		this_scene[fam_scenes[i][4] - 1][fam_scenes[i][3] - 1] = image_switchboard[this_word[0]] // place first letter of second word on its position
+		this_scene[fam_scenes[i][4] + this_word[3] - 1][fam_scenes[i][3] + this_word[2] - 1] = image_switchboard[this_word[1]] // place second letter of word in its position
+
+		this_word = word_decode[fam_scenes[i][8]]; // get third word
+		this_scene[fam_scenes[i][7] - 1][fam_scenes[i][6] - 1] = image_switchboard[this_word[0]] // place first letter of third word on its position
+		this_scene[fam_scenes[i][7] + this_word[3] - 1][fam_scenes[i][6] + this_word[2] - 1] = image_switchboard[this_word[1]] // place second letter of word in its position
+
+		scene.push(this_scene) // I don not need this anymore, for experimental control maybe for storing?
+
+		var this_trial = {
+				type: 'vsl-grid-scene-snap',
+    			stimuli: this_scene,
+    			image_size: [global_image_size, global_image_size],
+    			line_px: global_line_px,
+    			post_trial_gap: global_post_trial_gap
+			}
+		scene_array.push(this_trial)
+	};
+
+	
+	var scrambled_scene_array = jsPsych.randomization.repeat(scene_array, 1);
+
+	jsPsych.data.addProperties({image_switchboard: image_switchboard, scene_order: scrambled_scene_array});
+
+	var fam_part_1 = {
+		timeline: scrambled_scene_array.slice(0, 48)
+	};
+	var fam_part_2 = {
+		timeline: scrambled_scene_array.slice(48, 96)
+	};
+	var fam_part_3 = {
+		timeline: scrambled_scene_array.slice(96)
+	};
+
+
+	//timeline holding all scenes in randomized order and attention 2 attention checks
+	var VSL_trials_procedure = {
+		timeline: [fam_part_1, attention_check, fam_part_2, attention_check, fam_part_3]
+	};
+	// var VSL_trials_procedure = {
+	// 	timeline: [fam_part_1, attention_check, fam_part_2, attention_check, fam_part_3]
+	// };
+	timeline.push(VSL_trials_procedure);
+
+// PAHSE 1 - Familiarization   END
+
+
+	var countdown_procedure = {
+		timeline: []
+	};
+
+	for (let counter = 0; counter < 120; counter++) {
+		var countdown_trial = {
+    		type: 'html-keyboard-response',
+    		stimulus: '<p>Your practice session is now over.</p>' +
+    			'<p>The test session will start in 2 minutes.<p>' +
+    			'<p>You can use these two minutes to relaxe your eyes.</p>' +
+    			'<p> <br> </p>' +
+    			'<p>Seconds remaining:</p>' +
+    			'<p> <br> </p>' +
+    			(120 - counter),
+  			choices: jsPsych.NO_KEYS,
+  			trial_duration: 1000,
+    	}
+		countdown_procedure.timeline.push(countdown_trial)
+	};
+	timeline.push(countdown_procedure);
+
+
+
+	var instructions_test = {
+    	type: 'html-keyboard-response',
+    	stimulus: '<p style="text-align: justify;margin-left: 15%; margin-right:15%"> This is your test session. You will see 36 trials. In each trial two pairs of shapes ' +
+    	'will appear with one second of pause between them. Your task is to decide which of the ' +
+    	'two pairs looks more familiar based on the practice session you have just seen. ' +
+    	'After the second shape-pair a dialog window will appear asking whether the first or the ' +
+    	'second pair was more familiar. Using the keyboard you should press 1 or 2. ' +
+    	'<br> Pressing 1 means that the first shape-pair is more familiar. ' +
+    	'<br> Pressing 2 means that the second shape-pair is more familiar. ' +
+    	'<br> No other inputs are accepted. ' +
+    	'<br> It is important that you pay attention to each trial and that you reply to each trial to the best of your knowledge. ' +
+    	'Always reply either 1 or 2, even if you are unsure. ' +
+    	'<br><br>' +
+    	'Press space bar to begin.<p>'
+    }
+	timeline.push(instructions_test)
+
+
+
+// PAHSE 2 - 2AFC task   START
+
+	var test_array = []
+
+	var test_scenes = test_scenes_1; // array from test_1.js file
+
+  	var nonword_decode = [
+  	[], // because the original file indexes from 1 not 0
+  	[3, 7, 0, 1], // shape ID is minus 1 compared to Matlab version because of indexing
+    [6, 2, 0, 1],
+    [1, 8, 1, 0],
+    [9, 0, 1, 0],
+    [5, 11, -1, 1],
+    [4, 10, 1, 1]
+    ];
+
+
+	for ( let j = 0; j < test_scenes.length; j++) {
+
+		var this_test_trial = { // contains both test sceneces plus the decision
+			timeline: []
+		};
+
+		var this_test_stimuli = { // contains both test scenes
+			timeline: []
+		};
+
+// create true word scene
+		var first_test_scene = [
+			[0,0,0],
+			[0,0,0],
+			[0,0,0]
+		];
+
+		this_word = word_decode[test_scenes[j][2]]; // get the word
+		first_test_scene[test_scenes[j][1] - 1][test_scenes[j][0] - 1] = image_switchboard[this_word[0]] // place first letter of the word on its position
+		first_test_scene[test_scenes[j][1] + this_word[3] - 1][test_scenes[j][0] + this_word[2] - 1] = image_switchboard[this_word[1]] // place second letter of the word in its position
+
+		var true_test_scene = {
+				type: 'vsl-grid-scene-snap',
+    			stimuli: first_test_scene,
+    			image_size: [global_image_size, global_image_size],
+    			line_px: global_line_px,
+    			post_trial_gap: global_post_trial_gap
+			}
+
+// create foil word scene
+		var second_test_scene = [
+			[0,0,0],
+			[0,0,0],
+			[0,0,0]
+		];
+
+		this_word = nonword_decode[test_scenes[j][5]]; // get the word
+		second_test_scene[test_scenes[j][4] - 1][test_scenes[j][3] - 1] = image_switchboard[this_word[0]] // place first letter of the word on its position
+		second_test_scene[test_scenes[j][4] + this_word[3] - 1][test_scenes[j][3] + this_word[2] - 1] = image_switchboard[this_word[1]] // place second letter of the word in its position
+
+		var foil_test_scene = {
+				type: 'vsl-grid-scene-snap',
+    			stimuli: second_test_scene,
+    			image_size: [global_image_size, global_image_size],
+    			line_px: global_line_px,
+    			post_trial_gap: global_post_trial_gap
+			}
+
+		var pres_order = jsPsych.randomization.repeat([1,2], 1)
+		var correct = 9
+
+		// pres_order = 1 // for debug
+
+		if (pres_order[0] == 1) {
+			this_test_stimuli.timeline.push(true_test_scene)
+			this_test_stimuli.timeline.push(foil_test_scene)
+			correct = 1
+
+		} else {
+			this_test_stimuli.timeline.push(foil_test_scene)
+			this_test_stimuli.timeline.push(true_test_scene)
+			correct = 2
+		}
+
+		this_test_trial.timeline.push(this_test_stimuli)
+
+		var this_decision = {
+    		type: 'html-keyboard-response',
+    		stimulus: '<p>Was the first (1) or second (2) more familiar?</p>' +
+    		'<p>Press key (1) or (2)<p>',
+    		choices: ["1", "2"],
+    		post_trial_gap: 1000,
+    		data: {test_part: 'test',
+    			   correct_response: correct,
+    			   test_number: j
+    		},
+    		on_finish: function(data){
+    			data.correct = data.key_press == jsPsych.pluginAPI.convertKeyCharacterToKeyCode(data.correct_response.toString());
+    		}
+    	}
+		this_test_trial.timeline.push(this_decision)
+
+		test_array.push(this_test_trial)
+	}
+
+	scrambled_test_array = jsPsych.randomization.repeat(test_array, 1);
+
+	var test_procedure = {
+		timeline: scrambled_test_array
+	};
+	timeline.push(test_procedure)
+
+// PAHSE 2 - 2AFC task   END
+
+
+// PHASE 3 - Open questions   START
+
+	var post_survey_1 = {
+  		type: 'survey-text',
+  		questions: [{prompt: " The main part of the experiment is now over. Please, explain with your own words what do you think the experiment was about. ", rows: 5, columns: 50, required: true}]
+	};
+	var post_survey_2 = {
+  		type: 'survey-text',
+  		questions: [{prompt: " In the first part of the experiment: Did you notice any regularities when you observed the sequence of scenes? If yes, please describe them! ", rows: 5, columns: 50, required: true}]
+	};
+	var post_survey_3 = {
+  		type: 'survey-text',
+  		questions: [{prompt: " In the first part of the experiment: Did you notice that the used shapes always appeard in pairs? ", rows: 5, columns: 50, required: true}]
+	};
+	var post_survey_4 = {
+  		type: 'survey-text',
+  		questions: [{prompt: "Did you ever participate in an experiment similar to this one? If yes, please roughly describe it in one or two senteces.", rows: 5, columns: 50, required: true}]
+	};
+
+	timeline.push(post_survey_1, post_survey_2, post_survey_3, post_survey_4);
+
+
+// PHASE 3 - Open questions   END
+
+
+	// exit fullscreen mode
+	timeline.push({
+  		type: 'fullscreen',
+  		fullscreen_mode: false
+	});
+
+	// add participantn Nr to data
+	jsPsych.data.addProperties({
+  		subject: participant,
+		fam_seq: fam_seq,
+		trainingSeq_random: trainingSeq_random
+	});
+
+
+    var debriefing_trial = {
+        type: 'html-button-response',
+        stimulus: '<p style="text-align: justify; margin-right: 15%; margin-left: 15%">  This is the end of the experiment. <br><br>'+
+            'Thank you for your participation! <br><br>' +
+            'If you would like any additional information, please email the experimenter at szabo_beata-tunde@phd.ceu.edu <br><br>'+
+            'Please press the button bellow to be redirected to Prolific to collect your credits. <br>',
+        choices: ['Continue']
+    };
+    timeline.push(debriefing_trial)
+
+
+	// finish connection with pavlovia.org
+	var pavlovia_finish = {
+		type: "pavlovia",
+		command: "finish",
+		participantId: participant,
+		session: session
+		};
+	timeline.push(pavlovia_finish);
+
+
+	// initialize experiment
+    jsPsych.init({
+    	timeline: timeline,
+    	preload_images: image_switchboard,
+    	on_finish: function () {
+            document.body.innerHTML = '<p style="text-align: justify;"> You will be redirected back to Prolific in a few moments. Please wait. </p>'
+            setTimeout(function () { location.href = "https://app.prolific.co/submissions/complete?cc=CNVL6LFH" }, 10000)
+        }
+    });
+
+    </script>
+</html>
