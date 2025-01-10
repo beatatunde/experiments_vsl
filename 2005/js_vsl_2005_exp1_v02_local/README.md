@@ -1,0 +1,1 @@
+jsPsych implementation of Exp 2 from: Fiser, J., & Aslin, R. N. (2001). Unsupervised Statistical Learning of Higher-Order Spatial Structures from Visual Scenes. Psychological Science, 12(6), 499-504. doi: 10.1111/1467-9280.00392

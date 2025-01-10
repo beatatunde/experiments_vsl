@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>VSL Experiment</title>
+
+		
+        <script src="jspsych/jspsych.js"></script>
+        <script src="jspsych/plugin-html-keyboard-response.js"></script>
+
+        <script src="jspsych/plugin-html-button-response.js"></script>
+        <script src="jspsych/plugin-survey-html-form.js"></script>
+        <script src="jspsych/plugin-survey-text.js"></script>
+
+        <script src="jspsych-vsl-grid-attention-check.js"></script>
+        <script src="jspsych-vsl-grid-scene_snap.js"></script>
+        <script src="snap.svg.js"></script>
+        <script src="detect.js"></script>
+
+
+ 		<script src="jspsych/plugin-fullscreen.js"></script>
+        <link href="jspsych/jspsych.css" rel="stylesheet" type="text/css"></link>
+        <script type="text/javascript" src="familiarization_2005e1_v02.js"></script>
+        <script type="text/javascript" src="test_1.js"></script>
+
+        
+		<script type="text/javascript" src="jspsych-7-pavlovia-2022.1.1.js"></script>
+    </head>
+    <body></body>
+    <script>
+
+// type="text/javascript" src="lib/vendors/jquery-2.2.0.min.js">
+
+/* VSL 1
+jsPSych implementation of Experiment 1 from: Fiser, J., & Aslin, R. N. (2001). Unsupervised Statistical Learning of Higher-Order Spatial Structures from Visual Scenes. Psychological Science, 12(6), 499-504. doi: 10.1111/1467-9280.00392
+
+Phase 1 - Familiarization: presents stream of 6 element scenes.
+Uses scene structures stored in an array in familiarization.js. This is based on the original Matlab file, therefore indexing starts from 1 there. Fixes for that are foung throughout the script. Phase 1 is followed by a 2 minutes break.
+
+Phase 2 - 2-alternative forced choice task
+Uses test scene strucutre stored in an array in test_1.js. Same indexing issue and fix as Phase 1.
+*/
+
+	// set paramters for all VSL scenes (familiarization and test)
+	var global_image_size = 150; // 200;
+	var global_line_px = 3;
+	var global_post_trial_gap = 1000;
+	var user_browser = (detect.parse(navigator.userAgent)).browser.family;
+
+	
+
+
+   	// initialize experiment
+	   var jsPsych = initJsPsych({
+    	timeline: timeline,
+    	preload_images: image_switchboard,
+		override_safe_mode: true,
+    	on_finish: function () {
+            document.body.innerHTML = '<p style="text-align: justify;"> You will be redirected back to Prolific in a few moments. Please wait. </p>'
+            setTimeout(function () { location.href = "https://app.prolific.co/submissions/complete?cc=777B2804" }, 10000)
+			jsPsych.data.get().addToLast({
+			randomID: randID,
+			subject: participant,
+			image_switchboard: image_switchboard, 
+			scene_order: scrambled_scene_array
+			});
+			saveData("experiment_VSL_randID" + randID + ".csv", jsPsych.data.get().csv())
+		}
+    });
+
+	var timeline = []
+	
+
+	// get info about participants from prolific
+	var participant = jsPsych.data.getURLVariable('participant');
+    var session  = jsPsych.data.getURLVariable('session');
+
+    /* init connection with pavlovia.org */
+/* 	var pavlovia_init = {
+		type: "pavlovia",
+		command: "init"
+	};
+	timeline.push(pavlovia_init); */
+
+
+    var redirect_browser = {
+        type: jsPsychHtmlButtonResponse,
+        stimulus: '<p style="text-align: justify;margin-left: 15%; margin-right:15%"> Unfortunatly, your browser is not supported. ' +
+        ' Please use Google Chrome, Safari or Opera to run this experiment. ' +
+        ' If you have any questions about this, please email the experimenter at szabo_beata-tunde@phd.ceu.edu ' +
+        ' You can now close this window/tab </p>',
+        choices: []
+    };
+
+        var redirect_mobile = {
+        type: jsPsychHtmlButtonResponse,
+        stimulus: '<p style="text-align: justify;margin-left: 15%; margin-right:15%"> Unfortunatly, this study cannot be completed on mobile devices. ' +
+        ' Please use a desktop computer or laptop. ' +
+        ' If you have any questions about this, please email the experimenter at szabo_beata-tunde@phd.ceu.edu ' +
+        ' You can now close this window/tab </p>',
+        choices: []
+    };
+
+
+    // exlcude participant using edge or internet explorer
+    //if (user_browser == "Firefox") {
+        // pass
+    //}
+    if (user_browser == "Chrome") {
+        // pass
+    } else if (user_browser == "Safari") {
+        // pass
+    } else if (user_browser == "Opera") {
+        // pass
+    }else {
+        timeline.push(redirect_browser);
+    };
+
+
+    if (/Mobi|Android/i.test(navigator.userAgent)) {
+        timeline.push(redirect_mobile);
+    }
+
+
+	// create and save unique id for the participant for the Testable endscreen to see if they finished the experiment 
+     var randID = jsPsych.randomization.randomID(5)
+
+ 
+
+
+    // enter fullscreen mode
+    timeline.push({
+  		type: jsPsychFullscreen,
+  		fullscreen_mode: true,
+  		post_trial_gap: 1,
+	});
+
+    var welcome_trial = {
+        type: jsPsychHtmlButtonResponse,
+        stimulus: '<p style="text-align: justify;margin-left: 15%; margin-right:15%">You are participating in an experiment at the Vision Lab of the Department of Cognitive Science, Central European University. '+
+        ' One of our main questions is what kind of representations we can create about our visual environment and how these representations influence our behavior. '+
+        'At our lab we use multiple methods, for example behavioral experiments and computational models. '+
+        'In this experiment you will observe scenes consisting of abstract shapes and answer simple questions about them. <br><br>'+
+      	'At the beginning and throughout the experiment you will receive precise information about what to do. The experiment takes about 20 minutes in total. <br><br>'+
+        'The test is voluntary, and you can withdraw your participation at any time. We treat your personal information confidentially. <br>'+
+        'Only those people who work on this research project have access to your data. We will work with group level statistics. We will only report the results of the group in scientific publications and conferences. '+
+        'This research was approved by the Hungarian Psychological Research Ethics Committee.<br><br>'+
+        'If you have any further questions about the study, you can contact the experimenter, Beata Tunde Szabo, PhD Student. Contact: 1051 Nador u. 11. E-mail: szabo_beata-tunde@phd.ceu.edu <br><br>'+
+        'By pressing the button below you indicate that you read this information, found it sufficent, and you consent to participate in the experiment. <br><br> </p>',
+        choices: ['I consent to participate in the experiment']
+    };
+	timeline.push(welcome_trial)
+
+
+    var survey = {
+        type: jsPsychSurveyHtmlForm,
+        preamble: 'Before you start the experiment, please answer these non-identifying demographic questions. <br> These questions are not a screener. <br><br><br>',
+        html: '<p><label for="Age">Age:</label> <input name="Age" id="Age" type="text" required/>  <br><br> </p>' +
+         '<p> Gender:</label> </p>'+
+         '<div> <input type="radio" id="Female" name="gender" value="Female" checked> <label for="Female">Female</label>'+
+         '&emsp;<input type="radio" id="Male" name="gender" value="Male"><label for="Male">Male</label>'+
+         '&emsp;<input type="radio" id="Other" name="gender" value="Other"><label for="Other"></label>' +
+         '<input type="text" name="gender_other" /> </div> <br><br>',
+        button_label:['Continue to the instructions']
+    };
+  //  timeline.push(survey)
+
+
+	var instructions_fam = {
+    	type: jsPsychHtmlButtonResponse,
+    	stimulus: '<p style="text-align: justify;margin-left: 15%; margin-right:15%"> This is your practice session. You will see a checkerboard with random simple shapes ' +
+    	'appearing in different positions in the checkerboard. Your task is simply to observe ' +
+    	'the patterns so that you would be able to answer some questions about the sequence ' +
+    	'after the practice session.  The session will last for about 8 minutes.  Please, pay ' +
+    	'attention to EACH display! ' +
+    	'<br><br>' +
+    	'Occasionally, there will be an attention check asking you to press the spacebar. ',
+        choices: ['Start the experiment.']
+    }
+	timeline.push(instructions_fam)
+
+
+// Attention Check - START /////////////////////////////////////////////////
+	var positions = [
+		[0,0], [0,1], [0,2], [0,3], [0,4],
+		[1,0], [1,1], [1,2], [1,3], [1,4],
+		[2,0], [2,1], 		 [2,3], [2,4],
+		[3,0], [3,1], [3,2], [3,3], [3,4],
+		[4,0], [4,1], [4,2], [4,3], [4,4]
+	];
+
+	// creats and displays a random attention check scene
+	var attention_trial = {
+		type: jsPsychVslGridAttentionCheck,
+		stimuli: function() {
+			var this_att_check = [
+				[0,0,0,0,0],
+				[0,0,0,0,0],
+				[0,0,"img/attention.png",0,0],
+				[0,0,0,0,0],
+				[0,0,0,0,0]
+				];
+			var this_postions = jsPsych.randomization.sampleWithoutReplacement(positions, 5);
+			for(let l=0; l < this_postions.length; l++) {
+				this_att_check[this_postions[l][0]][this_postions[l][1]] = "img/square.png"
+				}
+				return this_att_check;
+			},
+		image_size: [global_image_size, global_image_size],
+		line_px: global_line_px,
+		trial_duration: 3000,
+		post_trial_gap: 0,
+		choices: [' '],
+		stimulus_duration: 2000
+	};
+
+	// loops attention check scenes until spacbar was pressed
+	var attention_loop = {
+	    timeline: [attention_trial],
+		loop_function: function(data){
+			if(jsPsych.pluginAPI.compareKeys(' ', data.values()[0].response)){
+				return false;
+			} else {
+	            return true;
+	        }
+	    }
+	};
+
+	// add 1 second blank screen as iti between pressing of space bar and next VSL scene
+	var iti_trial = {
+    	type: jsPsychHtmlKeyboardResponse,
+		choices: "NO_KEYS",
+    	stimulus: ' ',    	
+    	trial_duration: 1000,
+	};
+
+	// this needs to be pushed to the timeline to implement a full attention check
+	var attention_check = {
+		timeline: [attention_loop, iti_trial]
+	};
+// Attention Check - END  //////////////////////////////////////////////////
+
+
+// PAHSE 1 - Familiarization   START ////////////////////////////////////////
+	var scene_array = [];
+
+	var fam_scenes = familiarization_scenes; // array from familiarization.js file
+
+	//for debugging
+	// var fam_scenes = [
+	// 	[1,1,1,2,1,3,3,2,5],
+	// 	[1,1,2,2,1,3,3,2,5],
+	// 	[1,1,1,2,1,4,3,2,5]
+	// ]
+
+	var images = ["img/obj1.png", "img/obj2.png", "img/obj3.png", "img/obj4.png", "img/obj5.png", "img/obj6.png", "img/obj7.png", "img/obj8.png", "img/obj9.png", "img/obj10.png", "img/obj11.png", "img/obj12.png"]
+
+	var image_switchboard = jsPsych.randomization.repeat(images, 1);
+
+	var word_decode = [
+		[], // because the original file indexes from 1 not 0
+		[0, 1, 1, 1, 2, 2, 2],  // shape ID is minus 1 compared to Matlab version because of indexing
+		[3, 4, 1, -1, 5, 2, -2],
+		[6, 7, 1, 1, 8, 0, 2],
+		[9, 10, -1, 1, 11, 0, 2]
+	];
+
+	var scene = [] // I don not need this anymore, for experimental control maybe for storing?
+
+	for ( let i = 0; i < fam_scenes.length; i++){ //fam_scenes.length; i++) {//SHORTEN fam_scenes.length; i++) {
+		var this_scene = [
+			[0,0,0,0,0],
+			[0,0,0,0,0],
+			[0,0,0,0,0],
+			[0,0,0,0,0],
+			[0,0,0,0,0]
+		];
+
+		this_word = word_decode[fam_scenes[i][2]]; // get first word
+		this_scene[fam_scenes[i][1] ][fam_scenes[i][0] ] = image_switchboard[this_word[0]] // place first letter of first word on its position
+		this_scene[fam_scenes[i][1] + this_word[3] ][fam_scenes[i][0] + this_word[2] ] = image_switchboard[this_word[1]] // place second letter of word in its position
+		this_scene[fam_scenes[i][1] + this_word[6] ][fam_scenes[i][0] + this_word[5] ] = image_switchboard[this_word[4]] // place third letter of word in its position
+
+
+		this_word = word_decode[fam_scenes[i][5]]; // get second word
+		this_scene[fam_scenes[i][4] ][fam_scenes[i][3] ] = image_switchboard[this_word[0]] // place first letter of second word on its position
+		this_scene[fam_scenes[i][4] + this_word[3] ][fam_scenes[i][3] + this_word[2] ] = image_switchboard[this_word[1]] // place second letter of word in its position
+		this_scene[fam_scenes[i][4] + this_word[6] ][fam_scenes[i][3] + this_word[5] ] = image_switchboard[this_word[4]] // place second letter of word in its position
+
+		scene.push(this_scene) // I don not need this anymore, for experimental control maybe for storing?
+
+		var this_trial = {
+				type: jsPsychVslGridSceneSnap, 
+    			stimuli: this_scene,
+    			image_size: [global_image_size, global_image_size],
+    			line_px: global_line_px,
+    			post_trial_gap: global_post_trial_gap
+			}
+		scene_array.push(this_trial)
+	};
+
+	var scrambled_scene_array = jsPsych.randomization.repeat(scene_array, 1);
+
+
+	var fam_part_1 = {
+		timeline: scrambled_scene_array.slice(0, 48)
+	};
+	var fam_part_2 = {
+		timeline: scrambled_scene_array.slice(48, 96)
+	};
+	var fam_part_3 = {
+		timeline: scrambled_scene_array.slice(96)
+	};
+
+
+	//timeline holding all scenes in randomized order and attention 2 attention checks
+	var VSL_trials_procedure = {
+		timeline: [fam_part_1, attention_check, fam_part_2, attention_check, fam_part_3, attention_check, fam_part_1, attention_check, fam_part_2, attention_check, fam_part_3]
+	};
+	// var VSL_trials_procedure = {
+	// 	timeline: [fam_part_1, attention_check, fam_part_2, attention_check, fam_part_3]
+	// };
+	timeline.push(VSL_trials_procedure);
+
+// PAHSE 1 - Familiarization   END
+
+
+	var countdown_procedure = {
+		timeline: []
+	};
+
+	for (let counter = 0; counter < 120; counter++) { //120; counter++) {//SHORTEN 120; counter++) {
+		var countdown_trial = {
+    		type: jsPsychHtmlKeyboardResponse,
+    		stimulus: '<p>Your practice session is now over.</p>' +
+    			'<p>The test session will start in 2 minutes.<p>' +
+    			'<p>You can use these two minutes to relaxe your eyes.</p>' +
+    			'<p> <br> </p>' +
+    			'<p>Seconds remaining:</p>' +
+    			'<p> <br> </p>' +
+    			(120 - counter),
+  			choices: "NO_KEYS",
+  			trial_duration: 1000,
+    	}
+		countdown_procedure.timeline.push(countdown_trial)
+	};
+	timeline.push(countdown_procedure);
+
+
+
+	var instructions_test = {
+    	type: jsPsychHtmlKeyboardResponse,
+    	stimulus: '<p style="text-align: justify;margin-left: 15%; margin-right:15%"> This is your test session. You will see 36 trials. In each trial two pairs of shapes ' +
+    	'will appear with one second of pause between them. Your task is to decide which of the ' +
+    	'two pairs looks more familiar based on the practice session you have just seen. ' +
+    	'After the second shape-pair a dialog window will appear asking whether the first or the ' +
+    	'second pair was more familiar. Using the keyboard you should press 1 or 2. ' +
+    	'<br> Pressing 1 means that the first shape-pair is more familiar. ' +
+    	'<br> Pressing 2 means that the second shape-pair is more familiar. ' +
+    	'<br> No other inputs are accepted. ' +
+    	'<br> It is important that you pay attention to each trial and that you reply to each trial to the best of your knowledge. ' +
+    	'Always reply either 1 or 2, even if you are unsure. ' +
+    	'<br><br>' +
+    	'Press space bar to begin.<p>'
+    }
+	timeline.push(instructions_test)
+
+
+
+// PAHSE 2 - 2AFC task   START  //DEBUG START
+
+	var test_array = []
+
+	var test_scenes = test_scenes_1; // array from test_1.js file
+
+  	var nonword_decode = [
+  	[], // because the original file indexes from 1 not 0; shape ID is minus 1 compared to Matlab version because of indexing
+  	[1, 1, 0, 0, 1, 0, 0, 1, 0, 0], // The 6 single nonwords are all Y-s because what is said above 
+	[3, 1, 0, 0, 1, 0, 0, 1, 0, 0],
+	[5, 1, 0, 0, 1, 0, 0, 1, 0, 0],
+	[7, 1, 0, 0, 1, 0, 0, 1, 0, 0],
+	[9, 1, 0, 0, 1, 0, 0, 1, 0, 0],
+	[11, 1, 0, 0, 1, 0, 0, 1, 0, 0],
+	[3, 8, 1, 1, 1, 0, 0, 1, 0, 0], // Here start the 4 valuable nonword pairs: DI
+	[4, 7, 1, -1, 1, 0, 0, 1, 0, 0], // EH
+	[6, 5, 1, -1, 1, 0, 0, 1, 0, 0], // GF
+	[3, 7, 1, -1, 1, 0, 0, 1, 0, 0], // DH
+	[8, 6, 0, 1, 1, 0, 0, 1, 0, 0], // These are the two dummy pair nonwords: IG
+	[11, 9, 1, 0, 1, 0, 0, 1, 0, 0], // LJ
+	[10, 0, 1, 1, 11, 2, 2, 1, 0, 0], // Here start the 2 good triplet nonwords: KAL
+	[1, 9, -1, 1, 2, 0, 2, 1, 0, 0], // BJC
+	[4, 2, 1, 0, 8, 2, 0, 1, 0, 0], // These are the two dummy triplet nonwords: ECI
+	[6, 9, 0, 1, 0, 1, 1, 1, 0, 0], // GJA
+	[1, 4, 1, 0, 6, 0, 1, 11, 1, 1], // These are the 3 dummy quadruplet nonwords: square
+	[11, 0, 0, 1, 9, -1, 2, 8, 1, 1], // left Y
+	[3, 2, -1, 0, 7, -1, 1, 5, 1, 0] // left L
+];
+
+	
+	var word_decode_test = [
+  	[], // because the original file indexes from 1 not 0, shape ID is minus 1 compared to Matlab version because of indexing
+  	[0, 1, 0, 0, 1, 0, 0, 1, 0, 0], 	// The 6 singles are all X-s because the first element will be overwritten by a randomization 
+	[2, 1, 0, 0, 1, 0, 0, 1, 0, 0],					// and the rest will not be shown ever. The 0 0 position change signals that they are not used.
+	[4, 1, 0, 0, 1, 0, 0, 1, 0, 0],
+	[6, 1, 0, 0, 1, 0, 0, 1, 0, 0],
+	[8, 1, 0, 0, 1, 0, 0, 1, 0, 0],
+	[10, 1, 0, 0, 1, 0, 0, 1, 0, 0],
+	[0, 1, 1, 1, 1, 0, 0, 1, 0, 0],					// Here start the 4 valuable word pairs: AB
+	[1, 2, 1, 1, 1, 0, 0, 1, 0, 0],					// BC
+	[9, 10, -1, 1, 1, 0, 0, 1, 0, 0],				// JK
+	[10, 11, 1, 1, 1, 0, 0, 1, 0, 0],				// KL
+	[0, 2, 0, -1, 1, 0, 0, 1, 0, 0],				// These are the two dummy pair words: AC
+	[4, 5, -1, 0, 1, 0, 0, 1, 0, 0],				// EF
+	[3, 4, 1, -1, 5, 2, -2, 1, 0, 0],				// Here start the 2 good triplet words: DEF
+	[6, 7, 1, 1, 8, 0, 2, 1, 0, 0], 				// GHI
+	[3, 1, 0, 1, 11, 0, 2, 1, 0, 0],				// These are the two dummy triplet words:DBL
+	[5, 10, 1, 0, 7, 1, 1, 1, 0, 0],				// FKH
+	[8, 3, -1, 1, 0, 0, 2, 10, 1, 1],				// These are the 3 dummy quadruplet words: a ring
+	[2, 7, -1, 1, 9, 0, 1, 5, 1, 2],				// right Y
+	[1, 6, -1, 0, 4, 1, 0, 10, 1, 1]				// right L
+    ];
+
+
+	
+	// Randomize the single elements
+var permutedArray = Array.from({length: 12}, (_, i) => i);
+permutedArray.sort(() => Math.random() - 0.5);
+	
+	singleElementRandomize = permutedArray;
+	for (icount = 1; icount <= 6; icount++) {
+		word_decode_test[icount][0] = singleElementRandomize[icount-1];
+  		nonword_decode[icount][0] = singleElementRandomize[6 + icount-1];
+	}
+	// Randomize the quadruple elements Online select the image elements of the quads
+
+var permutedArray = Array.from({length: 12}, (_, i) => i);
+permutedArray.sort(() => Math.random() - 0.5);
+
+quadElementRandomize = permutedArray;
+word_decode_test[17][0] = quadElementRandomize[0];
+word_decode_test[17][1] = quadElementRandomize[1];
+word_decode_test[17][4] = quadElementRandomize[2];
+word_decode_test[17][7] = quadElementRandomize[3];
+word_decode_test[18][0] = quadElementRandomize[4];
+word_decode_test[18][1] = quadElementRandomize[5];
+word_decode_test[18][4] = quadElementRandomize[6];
+word_decode_test[18][7] = quadElementRandomize[7];
+word_decode_test[19][0] = quadElementRandomize[8];
+word_decode_test[19][1] = quadElementRandomize[9];
+word_decode_test[19][4] = quadElementRandomize[10];
+word_decode_test[19][7] = quadElementRandomize[11];
+
+var permutedArray = Array.from({length: 12}, (_, i) => i);
+permutedArray.sort(() => Math.random() - 0.5);
+quadElementRandomize = permutedArray;
+nonword_decode[17][0] = quadElementRandomize[0];
+nonword_decode[17][1] = quadElementRandomize[1];
+nonword_decode[17][4] = quadElementRandomize[2];
+nonword_decode[17][7] = quadElementRandomize[3];
+nonword_decode[18][0] = quadElementRandomize[4];
+nonword_decode[18][1] = quadElementRandomize[5];
+nonword_decode[18][4] = quadElementRandomize[6];
+nonword_decode[18][7] = quadElementRandomize[7];
+nonword_decode[19][0] = quadElementRandomize[8];
+nonword_decode[19][1] = quadElementRandomize[9];
+nonword_decode[19][4] = quadElementRandomize[10];
+nonword_decode[19][7] = quadElementRandomize[11];
+
+var permutedArray = Array.from({length: test_scenes.length}, (_, i) => i);
+// commented out for debugging: permutedArray.sort(() => Math.random() - 0.5);
+presentationSwitchBoard = permutedArray
+
+
+	for ( let j = 0; j < test_scenes.length; j++) {//SHORTEN test_scenes.length; j++) {
+
+		var this_test_trial = { // contains both test sceneces plus the decision
+			timeline: []
+		};
+
+		var this_test_stimuli = { // contains both test scenes
+			timeline: []
+		};
+
+// create true word scene
+		var first_test_scene = [
+			[0,0,0,0,0],
+			[0,0,0,0,0],
+			[0,0,0,0,0],
+			[0,0,0,0,0],
+			[0,0,0,0,0]
+		];
+
+		this_test_scene = test_scenes[presentationSwitchBoard[j]]
+		patternsize = this_test_scene[7]
+		this_word = word_decode_test[this_test_scene[2]]; // get the word
+
+		first_test_scene[this_test_scene[1] - 1][this_test_scene[0] - 1] = image_switchboard[this_word[0]] // place first letter of the word on its position
+		
+		if (patternsize > 1){
+			first_test_scene[this_test_scene[1] + this_word[3] - 1][this_test_scene[0] + this_word[2] - 1] = image_switchboard[this_word[1]] // place second letter of the word in its position
+		}
+		if (patternsize > 2){
+			first_test_scene[this_test_scene[1] + this_word[6] - 1][this_test_scene[0] + this_word[5] - 1] = image_switchboard[this_word[4]] // place second letter of the word in its position
+		}
+		if (patternsize > 3){
+			first_test_scene[this_test_scene[1] + this_word[9] - 1][this_test_scene[0] + this_word[8] - 1] = image_switchboard[this_word[7]] // place second letter of the word in its position
+		}
+	
+
+		var true_test_scene = {
+				type: jsPsychVslGridSceneSnap,
+    			stimuli: first_test_scene,
+    			image_size: [global_image_size, global_image_size],
+    			line_px: global_line_px,
+    			post_trial_gap: global_post_trial_gap
+			}
+
+// create foil word scene
+		var second_test_scene = [
+			[0,0,0,0,0],
+			[0,0,0,0,0],
+			[0,0,0,0,0],
+			[0,0,0,0,0],
+			[0,0,0,0,0]
+		];
+
+		this_word = nonword_decode[this_test_scene[5]]; // get the word
+		second_test_scene[this_test_scene[4] - 1][this_test_scene[3] - 1] = image_switchboard[this_word[0]] // place first letter of the word on its position
+		
+		if (patternsize > 1){
+			second_test_scene[this_test_scene[4] + this_word[3] - 1][this_test_scene[3] + this_word[2] - 1] = image_switchboard[this_word[1]] // place second letter of the word in its position
+		}
+		if (patternsize > 2){
+			second_test_scene[this_test_scene[4] + this_word[6] - 1][this_test_scene[3] + this_word[5] - 1] = image_switchboard[this_word[4]] // place second letter of the word in its position
+		}
+		if (patternsize > 3){
+			second_test_scene[this_test_scene[4] + this_word[9] - 1][this_test_scene[3] + this_word[8] - 1] = image_switchboard[this_word[7]] // place second letter of the word in its position
+		}
+
+		var foil_test_scene = {
+				type: jsPsychVslGridSceneSnap,
+    			stimuli: second_test_scene,
+    			image_size: [global_image_size, global_image_size],
+    			line_px: global_line_px,
+    			post_trial_gap: global_post_trial_gap
+			}
+
+		var pres_order = this_test_scene[6]  // order is defined in the testkeyfile, 7th column (index 6)
+		var correct = 9
+
+		// pres_order = 1 // for debug
+
+		if (pres_order == 1) {
+			this_test_stimuli.timeline.push(true_test_scene)
+			this_test_stimuli.timeline.push(foil_test_scene)
+			correct = '1'
+
+		} else {
+			this_test_stimuli.timeline.push(foil_test_scene)
+			this_test_stimuli.timeline.push(true_test_scene)
+			correct = '2'
+		}
+
+		this_test_trial.timeline.push(this_test_stimuli)
+
+		var this_decision = {
+    		type: jsPsychHtmlKeyboardResponse,
+    		stimulus: '<p>Was the first (1) or second (2) more familiar?</p>' +
+    		'<p>Press key (1) or (2)<p>',
+    		choices: ["1", "2"],
+    		post_trial_gap: 1000,  
+			trial_duration: 2000,			
+    		data: {test_part: 'test',
+    			   correct_response: correct,
+    			   test_number: j,
+				   test_scene: presentationSwitchBoard[j],
+				   patternsize: patternsize,
+				   true_test: this_test_scene[8]
+    		},
+    		on_finish: function(data){
+    			data.correct = jsPsych.pluginAPI.compareKeys(data.response, data.correct_response)  // correct is true if key press is the same as correct response;
+    		}
+    	}
+		this_test_trial.timeline.push(this_decision)
+
+		test_array.push(this_test_trial)
+	}
+
+	//scrambled_test_array = jsPsych.randomization.repeat(test_array, 1);
+
+	var test_procedure = {
+		timeline: test_array
+	};
+	timeline.push(test_procedure)
+  //DEBUG ENd
+
+// PAHSE 2 - 2AFC task   END
+
+
+// PHASE 3 - Open questions   START
+
+	var post_survey_1 = {
+  		type: jsPsychSurveyText,
+  		questions: [{prompt: " The main part of the experiment is now over. Please, explain with your own words what do you think the experiment was about. ", rows: 5, columns: 50, required: true}]
+	};
+	var post_survey_2 = {
+  		type: jsPsychSurveyText,
+  		questions: [{prompt: " In the first part of the experiment: Did you notice any regularities when you observed the sequence of scenes? If yes, please describe them! ", rows: 5, columns: 50, required: true}]
+	};
+	var post_survey_3 = {
+  		type: jsPsychSurveyText,
+  		questions: [{prompt: " In the first part of the experiment: Did you notice that the used shapes always appeard in triplets? ", rows: 5, columns: 50, required: true}]
+	};
+	var post_survey_4 = {
+  		type: jsPsychSurveyText,
+  		questions: [{prompt: "Did you ever participate in an experiment similar to this one? If yes, please roughly describe it in one or two senteces.", rows: 5, columns: 50, required: true}]
+	};
+
+	timeline.push(post_survey_1, post_survey_2, post_survey_3, post_survey_4);
+
+
+// PHASE 3 - Open questions   END
+
+
+	// exit fullscreen mode
+	timeline.push({
+  		type: jsPsychFullscreen,
+  		fullscreen_mode: false
+	});
+
+	// add participantn Nr to data
+	
+
+    var debriefing_trial = {
+        type: jsPsychHtmlButtonResponse,
+        stimulus: '<p style="text-align: justify; margin-right: 15%; margin-left: 15%">  This is the end of the experiment. <br><br>'+
+            'Thank you for your participation! <br><br>' +
+            'If you would like any additional information, please email the experimenter at szabo_beata-tunde@phd.ceu.edu <br><br>'+
+            'Please press the button bellow to be redirected to Prolific to collect your credits. <br>',
+        choices: ['Continue']
+    };
+    timeline.push(debriefing_trial)
+
+	jsPsych.data.get().addToLast({
+        randomID: randID,
+		subject: participant,
+		image_switchboard: image_switchboard, 
+		scene_order: scrambled_scene_array
+    });
+
+
+	// finish connection with pavlovia.org
+/* 	var pavlovia_finish = {
+		type: "pavlovia",
+		command: "finish",
+		participantId: participant,
+		session: session
+		};
+	timeline.push(pavlovia_finish);
+ */
+
+
+ jsPsych.run(timeline);
+
+	function saveData(name, data) {
+            var csvString = data;
+
+            var a = window.document.createElement('a');
+            a.setAttribute('href', 'data:text/csv; charset=utf-8,' + encodeURIComponent(csvString));
+            a.setAttribute('download', name);
+            window.document.body.appendChild(a);
+            a.click();
+            //var xhr = new XMLHttpRequest();
+            //xhr.open('POST', 'write_data.php'); // 'write_data.php' is the path to the php file described above.
+            //xhr.setRequestHeader('Content-Type', 'application/json');
+            //xhr.send(JSON.stringify({ filename: name, filedata: data })); -->
+        }
+    </script>
+</html>
