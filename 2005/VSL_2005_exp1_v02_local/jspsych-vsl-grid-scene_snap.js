@@ -82,7 +82,12 @@ class VslGridSceneSnapPlugin {
     var nrows = trial.stimuli.length;
     var ncols = trial.stimuli[0].length;
 
-    display_element.innerHTML = "<svg id='jspsych-vsl-grid-scene-snap-canvas' width=" + (trial.image_size[0]*nrows) + " height=" + (trial.image_size[1]*ncols) + "></svg>";
+    var nrows_grid = 21
+    var ncols_grid= 21
+    var stimuli_start_row = 2; // Center starting row
+    var stimuli_start_col = 8; // Center starting column
+
+    display_element.innerHTML = "<svg id='jspsych-vsl-grid-scene-snap-canvas' x='0' y='0' width=" + (trial.image_size[0]*nrows_grid) + " height=" + (trial.image_size[1]*ncols_grid) + "></svg>";
 
     var paper = Snap("#jspsych-vsl-grid-scene-snap-canvas");
 
@@ -92,22 +97,24 @@ class VslGridSceneSnapPlugin {
     for (var row = 0; row < nrows; row++) {
       for (var col = 0; col < ncols; col++) {
         if (trial.stimuli[row][col] !== 0) {
-        var shape = paper.image(trial.stimuli[row][col], trial.image_size[0]*(col), trial.image_size[1]*(row), trial.image_size[0], trial.image_size[1]);
+        var shape = paper.image(trial.stimuli[row][col], trial.image_size[0]*(col+stimuli_start_col), trial.image_size[1]*(row+stimuli_start_row), trial.image_size[0], trial.image_size[1]);
+        debugger;
         };
       };
     };
 
-    for (var row = 0; row < nrows; row++) {
-      for (var col = 0; col < ncols; col++) {
+    
+    for (var row = 0; row < nrows_grid; row++) {
+      for (var col = 0; col < ncols_grid; col++) {
         var cell = paper.rect(trial.image_size[0]*(col), trial.image_size[1]*(row), trial.image_size[0], trial.image_size[1]).attr({"fill-opacity": 0,  
                                                                                                                            stroke: 'black',
                                                                                                                            strokeWidth: trial.line_px});
       };
     };
-    var outline = paper.rect(0, 0, trial.image_size[0]*nrows, trial.image_size[1]*ncols).attr({"fill-opacity": 0,  
+    var outline = paper.rect(0, 0, trial.image_size[0]*nrows_grid, trial.image_size[1]*ncols_grid).attr({"fill-opacity": 0,  
                                                                                                                            stroke: 'black',
                                                                                                                            strokeWidth: trial.line_px*2});
-
+  
   };
 
 }

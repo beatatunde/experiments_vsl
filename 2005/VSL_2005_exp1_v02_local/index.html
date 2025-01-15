@@ -24,6 +24,14 @@
 
         
 		<script type="text/javascript" src="jspsych-7-pavlovia-2022.1.1.js"></script>
+		<style>
+			
+			#jspsych-vsl-grid-scene-snap-canvas {
+			  position: absolute;
+			  top: -45px;
+			  left: -45px;
+			}
+		  </style>
     </head>
     <body></body>
     <script>
@@ -41,7 +49,7 @@ Uses test scene strucutre stored in an array in test_1.js. Same indexing issue a
 */
 
 	// set paramters for all VSL scenes (familiarization and test)
-	var global_image_size = 150; // 200;
+	var global_image_size = 85; // 150; // 200;
 	var global_line_px = 3;
 	var global_post_trial_gap = 1000;
 	var user_browser = (detect.parse(navigator.userAgent)).browser.family;
