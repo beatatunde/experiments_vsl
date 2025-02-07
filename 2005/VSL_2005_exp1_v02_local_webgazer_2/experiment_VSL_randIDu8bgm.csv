@@ -1,0 +1,320 @@
+### Experiment Data ###
+"success","rt","trial_type","trial_index","time_elapsed","internal_node_id","viewport_dims","stimulus","response","test_part","correct_response","test_number","test_scene","patternsize","true_test","correct","randomID","subject","image_switchboard","scene_order"
+"true","2609","fullscreen","0","3634","0.0-0.0","{""width"":2048,""height"":898}","","","","","","","","","","","","",""
+"","4099","html-button-response","1","7735","0.0-1.0","{""width"":2048,""height"":898}","
+        <p style=""text-align: center;"">Please select the webcam associated with the screen you are using to view the experiment.</p>
+        <p style=""text-align: center;"">Select your webcam:</p>
+        <select id=""webcam-select""></select>
+    	","0","","","","","","","","","","",""
+"","921","html-button-response","2","8658","0.0-2.0","{""width"":2048,""height"":898}","<p>Click to start calibration!</p>","0","","","","","","","","","","",""
+"","","html-keyboard-response","3","31396","0.0-3.0","{""width"":2048,""height"":898}","","","","","","","","","","","","",""
+"","2217","html-button-response","4","33614","0.0-4.0","{""width"":2048,""height"":898}","<p style=""text-align: justify;margin-left: 15%; margin-right:15%"">You are participating in an experiment at the Vision Lab of the Department of Cognitive Science, Central European University.  One of our main questions is what kind of representations we can create about our visual environment and how these representations influence our behavior. At our lab we use multiple methods, for example behavioral experiments and computational models. In this experiment you will observe scenes consisting of abstract shapes and answer simple questions about them. <br><br>At the beginning and throughout the experiment you will receive precise information about what to do. The experiment takes about 20 minutes in total. <br><br>The test is voluntary, and you can withdraw your participation at any time. We treat your personal information confidentially. <br>Only those people who work on this research project have access to your data. We will work with group level statistics. We will only report the results of the group in scientific publications and conferences. This research was approved by the Hungarian Psychological Research Ethics Committee.<br><br>If you have any further questions about the study, you can contact the experimenter, Beata Tunde Szabo, PhD Student. Contact: 1051 Nador u. 11. E-mail: szabo_beata-tunde@phd.ceu.edu <br><br>By pressing the button below you indicate that you read this information, found it sufficent, and you consent to participate in the experiment. <br><br> </p>","0","","","","","","","","","","",""
+"","1596","html-button-response","5","35210","0.0-5.0","{""width"":2048,""height"":898}","<p style=""text-align: justify;margin-left: 15%; margin-right:15%""> This is your practice session. You will see a checkerboard with random simple shapes appearing in different positions in the checkerboard. Your task is simply to observe the patterns so that you would be able to answer some questions about the sequence after the practice session.  The session will last for about 8 minutes.  Please, pay attention to EACH display! <br><br>Occasionally, there will be an attention check asking you to press the spacebar. ","0","","","","","","","","","","",""
+"","","vsl-grid-scene-snap","6","37569","0.0-6.0-0.0-0.0","{""width"":2048,""height"":898}","[[0,""img/obj6.png"",0,0,0],[""img/obj2.png"",""img/obj5.png"",0,0,0],[0,""img/obj7.png"",""img/obj11.png"",0,0],[0,0,0,""img/obj10.png"",0],[0,0,0,0,0]]","","","","","","","","","","","",""
+"","","vsl-grid-scene-snap","7","41755","0.0-6.0-0.0-1.0","{""width"":2048,""height"":898}","[[0,0,""img/obj6.png"",0,0],[0,""img/obj2.png"",""img/obj5.png"",0,0],[0,0,""img/obj7.png"",""img/obj11.png"",0],[0,0,0,0,""img/obj10.png""],[0,0,0,0,0]]","","","","","","","","","","","",""
+"","1573","vsl-grid-scene","8","44924","0.0-6.0-1.0-0.0-0.0","{""width"":2048,""height"":898}",""," ","","","","","","","","","","",""
+"","null","html-keyboard-response","9","46259","0.0-6.0-1.0-1.0","{""width"":2048,""height"":898}"," ","null","","","","","","","","","","",""
+"","1865","vsl-grid-scene","10","48125","0.0-6.0-3.0-0.0-0.0","{""width"":2048,""height"":898}",""," ","","","","","","","","","","",""
+"","null","html-keyboard-response","11","49707","0.0-6.0-3.0-1.0","{""width"":2048,""height"":898}"," ","null","","","","","","","","","","",""
+"","656","vsl-grid-scene","12","50363","0.0-6.0-5.0-0.0-0.0","{""width"":2048,""height"":898}",""," ","","","","","","","","","","",""
+"","null","html-keyboard-response","13","51915","0.0-6.0-5.0-1.0","{""width"":2048,""height"":898}"," ","null","","","","","","","","","","",""
+"","","vsl-grid-scene-snap","14","54735","0.0-6.0-6.0-0.0","{""width"":2048,""height"":898}","[[0,""img/obj6.png"",0,0,0],[""img/obj2.png"",""img/obj5.png"",0,0,0],[0,""img/obj7.png"",""img/obj11.png"",0,0],[0,0,0,""img/obj10.png"",0],[0,0,0,0,0]]","","","","","","","","","","","",""
+"","","vsl-grid-scene-snap","15","59109","0.0-6.0-6.0-1.0","{""width"":2048,""height"":898}","[[0,0,""img/obj6.png"",0,0],[0,""img/obj2.png"",""img/obj5.png"",0,0],[0,0,""img/obj7.png"",""img/obj11.png"",0],[0,0,0,0,""img/obj10.png""],[0,0,0,0,0]]","","","","","","","","","","","",""
+"","962","vsl-grid-scene","16","61624","0.0-6.0-7.0-0.0-0.0","{""width"":2048,""height"":898}",""," ","","","","","","","","","","",""
+"","null","html-keyboard-response","17","63171","0.0-6.0-7.0-1.0","{""width"":2048,""height"":898}"," ","null","","","","","","","","","","",""
+"","914","vsl-grid-scene","18","64086","0.0-6.0-9.0-0.0-0.0","{""width"":2048,""height"":898}",""," ","","","","","","","","","","",""
+"","null","html-keyboard-response","19","65991","0.0-6.0-9.0-1.0","{""width"":2048,""height"":898}"," ","null","","","","","","","","","","",""
+"","null","html-keyboard-response","20","67842","0.0-7.0-0.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>120","null","","","","","","","","","","",""
+"","null","html-keyboard-response","21","69402","0.0-7.0-1.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>119","null","","","","","","","","","","",""
+"","null","html-keyboard-response","22","70640","0.0-7.0-2.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>118","null","","","","","","","","","","",""
+"","null","html-keyboard-response","23","71902","0.0-7.0-3.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>117","null","","","","","","","","","","",""
+"","null","html-keyboard-response","24","73488","0.0-7.0-4.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>116","null","","","","","","","","","","",""
+"","null","html-keyboard-response","25","75090","0.0-7.0-5.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>115","null","","","","","","","","","","",""
+"","null","html-keyboard-response","26","76182","0.0-7.0-6.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>114","null","","","","","","","","","","",""
+"","null","html-keyboard-response","27","77255","0.0-7.0-7.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>113","null","","","","","","","","","","",""
+"","null","html-keyboard-response","28","78329","0.0-7.0-8.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>112","null","","","","","","","","","","",""
+"","null","html-keyboard-response","29","79380","0.0-7.0-9.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>111","null","","","","","","","","","","",""
+"","null","html-keyboard-response","30","80922","0.0-7.0-10.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>110","null","","","","","","","","","","",""
+"","null","html-keyboard-response","31","82456","0.0-7.0-11.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>109","null","","","","","","","","","","",""
+"","null","html-keyboard-response","32","83498","0.0-7.0-12.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>108","null","","","","","","","","","","",""
+"","null","html-keyboard-response","33","84538","0.0-7.0-13.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>107","null","","","","","","","","","","",""
+"","null","html-keyboard-response","34","85629","0.0-7.0-14.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>106","null","","","","","","","","","","",""
+"","null","html-keyboard-response","35","86712","0.0-7.0-15.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>105","null","","","","","","","","","","",""
+"","null","html-keyboard-response","36","87761","0.0-7.0-16.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>104","null","","","","","","","","","","",""
+"","null","html-keyboard-response","37","88832","0.0-7.0-17.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>103","null","","","","","","","","","","",""
+"","null","html-keyboard-response","38","89891","0.0-7.0-18.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>102","null","","","","","","","","","","",""
+"","null","html-keyboard-response","39","90986","0.0-7.0-19.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>101","null","","","","","","","","","","",""
+"","null","html-keyboard-response","40","92540","0.0-7.0-20.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>100","null","","","","","","","","","","",""
+"","null","html-keyboard-response","41","93620","0.0-7.0-21.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>99","null","","","","","","","","","","",""
+"","null","html-keyboard-response","42","94674","0.0-7.0-22.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>98","null","","","","","","","","","","",""
+"","null","html-keyboard-response","43","95734","0.0-7.0-23.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>97","null","","","","","","","","","","",""
+"","null","html-keyboard-response","44","96831","0.0-7.0-24.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>96","null","","","","","","","","","","",""
+"","null","html-keyboard-response","45","97858","0.0-7.0-25.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>95","null","","","","","","","","","","",""
+"","null","html-keyboard-response","46","99409","0.0-7.0-26.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>94","null","","","","","","","","","","",""
+"","null","html-keyboard-response","47","100966","0.0-7.0-27.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>93","null","","","","","","","","","","",""
+"","null","html-keyboard-response","48","102838","0.0-7.0-28.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>92","null","","","","","","","","","","",""
+"","null","html-keyboard-response","49","104468","0.0-7.0-29.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>91","null","","","","","","","","","","",""
+"","null","html-keyboard-response","50","106077","0.0-7.0-30.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>90","null","","","","","","","","","","",""
+"","null","html-keyboard-response","51","107150","0.0-7.0-31.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>89","null","","","","","","","","","","",""
+"","null","html-keyboard-response","52","108763","0.0-7.0-32.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>88","null","","","","","","","","","","",""
+"","null","html-keyboard-response","53","110059","0.0-7.0-33.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>87","null","","","","","","","","","","",""
+"","null","html-keyboard-response","54","111780","0.0-7.0-34.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>86","null","","","","","","","","","","",""
+"","null","html-keyboard-response","55","112832","0.0-7.0-35.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>85","null","","","","","","","","","","",""
+"","null","html-keyboard-response","56","114050","0.0-7.0-36.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>84","null","","","","","","","","","","",""
+"","null","html-keyboard-response","57","115658","0.0-7.0-37.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>83","null","","","","","","","","","","",""
+"","null","html-keyboard-response","58","117560","0.0-7.0-38.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>82","null","","","","","","","","","","",""
+"","null","html-keyboard-response","59","119280","0.0-7.0-39.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>81","null","","","","","","","","","","",""
+"","null","html-keyboard-response","60","121147","0.0-7.0-40.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>80","null","","","","","","","","","","",""
+"","null","html-keyboard-response","61","122210","0.0-7.0-41.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>79","null","","","","","","","","","","",""
+"","null","html-keyboard-response","62","123756","0.0-7.0-42.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>78","null","","","","","","","","","","",""
+"","null","html-keyboard-response","63","125097","0.0-7.0-43.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>77","null","","","","","","","","","","",""
+"","null","html-keyboard-response","64","127008","0.0-7.0-44.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>76","null","","","","","","","","","","",""
+"","null","html-keyboard-response","65","128749","0.0-7.0-45.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>75","null","","","","","","","","","","",""
+"","null","html-keyboard-response","66","130636","0.0-7.0-46.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>74","null","","","","","","","","","","",""
+"","null","html-keyboard-response","67","132505","0.0-7.0-47.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>73","null","","","","","","","","","","",""
+"","null","html-keyboard-response","68","134363","0.0-7.0-48.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>72","null","","","","","","","","","","",""
+"","null","html-keyboard-response","69","135707","0.0-7.0-49.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>71","null","","","","","","","","","","",""
+"","null","html-keyboard-response","70","137232","0.0-7.0-50.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>70","null","","","","","","","","","","",""
+"","null","html-keyboard-response","71","138795","0.0-7.0-51.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>69","null","","","","","","","","","","",""
+"","null","html-keyboard-response","72","140379","0.0-7.0-52.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>68","null","","","","","","","","","","",""
+"","null","html-keyboard-response","73","142255","0.0-7.0-53.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>67","null","","","","","","","","","","",""
+"","null","html-keyboard-response","74","143857","0.0-7.0-54.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>66","null","","","","","","","","","","",""
+"","null","html-keyboard-response","75","145727","0.0-7.0-55.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>65","null","","","","","","","","","","",""
+"","null","html-keyboard-response","76","147624","0.0-7.0-56.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>64","null","","","","","","","","","","",""
+"","null","html-keyboard-response","77","148938","0.0-7.0-57.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>63","null","","","","","","","","","","",""
+"","null","html-keyboard-response","78","150489","0.0-7.0-58.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>62","null","","","","","","","","","","",""
+"","null","html-keyboard-response","79","152051","0.0-7.0-59.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>61","null","","","","","","","","","","",""
+"","null","html-keyboard-response","80","153654","0.0-7.0-60.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>60","null","","","","","","","","","","",""
+"","null","html-keyboard-response","81","155506","0.0-7.0-61.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>59","null","","","","","","","","","","",""
+"","null","html-keyboard-response","82","156657","0.0-7.0-62.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>58","null","","","","","","","","","","",""
+"","null","html-keyboard-response","83","157940","0.0-7.0-63.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>57","null","","","","","","","","","","",""
+"","null","html-keyboard-response","84","159256","0.0-7.0-64.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>56","null","","","","","","","","","","",""
+"","null","html-keyboard-response","85","160310","0.0-7.0-65.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>55","null","","","","","","","","","","",""
+"","null","html-keyboard-response","86","161902","0.0-7.0-66.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>54","null","","","","","","","","","","",""
+"","null","html-keyboard-response","87","163638","0.0-7.0-67.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>53","null","","","","","","","","","","",""
+"","null","html-keyboard-response","88","165542","0.0-7.0-68.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>52","null","","","","","","","","","","",""
+"","null","html-keyboard-response","89","167440","0.0-7.0-69.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>51","null","","","","","","","","","","",""
+"","null","html-keyboard-response","90","169338","0.0-7.0-70.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>50","null","","","","","","","","","","",""
+"","null","html-keyboard-response","91","171239","0.0-7.0-71.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>49","null","","","","","","","","","","",""
+"","null","html-keyboard-response","92","172277","0.0-7.0-72.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>48","null","","","","","","","","","","",""
+"","null","html-keyboard-response","93","173575","0.0-7.0-73.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>47","null","","","","","","","","","","",""
+"","null","html-keyboard-response","94","175237","0.0-7.0-74.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>46","null","","","","","","","","","","",""
+"","null","html-keyboard-response","95","176906","0.0-7.0-75.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>45","null","","","","","","","","","","",""
+"","null","html-keyboard-response","96","178244","0.0-7.0-76.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>44","null","","","","","","","","","","",""
+"","null","html-keyboard-response","97","179824","0.0-7.0-77.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>43","null","","","","","","","","","","",""
+"","null","html-keyboard-response","98","181157","0.0-7.0-78.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>42","null","","","","","","","","","","",""
+"","null","html-keyboard-response","99","182817","0.0-7.0-79.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>41","null","","","","","","","","","","",""
+"","null","html-keyboard-response","100","184700","0.0-7.0-80.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>40","null","","","","","","","","","","",""
+"","null","html-keyboard-response","101","185776","0.0-7.0-81.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>39","null","","","","","","","","","","",""
+"","null","html-keyboard-response","102","187177","0.0-7.0-82.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>38","null","","","","","","","","","","",""
+"","null","html-keyboard-response","103","188547","0.0-7.0-83.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>37","null","","","","","","","","","","",""
+"","null","html-keyboard-response","104","190330","0.0-7.0-84.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>36","null","","","","","","","","","","",""
+"","null","html-keyboard-response","105","192221","0.0-7.0-85.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>35","null","","","","","","","","","","",""
+"","null","html-keyboard-response","106","193557","0.0-7.0-86.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>34","null","","","","","","","","","","",""
+"","null","html-keyboard-response","107","195074","0.0-7.0-87.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>33","null","","","","","","","","","","",""
+"","null","html-keyboard-response","108","196398","0.0-7.0-88.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>32","null","","","","","","","","","","",""
+"","null","html-keyboard-response","109","198028","0.0-7.0-89.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>31","null","","","","","","","","","","",""
+"","null","html-keyboard-response","110","199930","0.0-7.0-90.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>30","null","","","","","","","","","","",""
+"","null","html-keyboard-response","111","201832","0.0-7.0-91.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>29","null","","","","","","","","","","",""
+"","null","html-keyboard-response","112","203236","0.0-7.0-92.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>28","null","","","","","","","","","","",""
+"","null","html-keyboard-response","113","204796","0.0-7.0-93.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>27","null","","","","","","","","","","",""
+"","null","html-keyboard-response","114","206402","0.0-7.0-94.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>26","null","","","","","","","","","","",""
+"","null","html-keyboard-response","115","207955","0.0-7.0-95.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>25","null","","","","","","","","","","",""
+"","null","html-keyboard-response","116","209621","0.0-7.0-96.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>24","null","","","","","","","","","","",""
+"","null","html-keyboard-response","117","210989","0.0-7.0-97.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>23","null","","","","","","","","","","",""
+"","null","html-keyboard-response","118","212574","0.0-7.0-98.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>22","null","","","","","","","","","","",""
+"","null","html-keyboard-response","119","214179","0.0-7.0-99.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>21","null","","","","","","","","","","",""
+"","null","html-keyboard-response","120","215765","0.0-7.0-100.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>20","null","","","","","","","","","","",""
+"","null","html-keyboard-response","121","217424","0.0-7.0-101.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>19","null","","","","","","","","","","",""
+"","null","html-keyboard-response","122","219341","0.0-7.0-102.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>18","null","","","","","","","","","","",""
+"","null","html-keyboard-response","123","221263","0.0-7.0-103.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>17","null","","","","","","","","","","",""
+"","null","html-keyboard-response","124","223206","0.0-7.0-104.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>16","null","","","","","","","","","","",""
+"","null","html-keyboard-response","125","224742","0.0-7.0-105.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>15","null","","","","","","","","","","",""
+"","null","html-keyboard-response","126","226321","0.0-7.0-106.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>14","null","","","","","","","","","","",""
+"","null","html-keyboard-response","127","227899","0.0-7.0-107.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>13","null","","","","","","","","","","",""
+"","null","html-keyboard-response","128","229466","0.0-7.0-108.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>12","null","","","","","","","","","","",""
+"","null","html-keyboard-response","129","231194","0.0-7.0-109.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>11","null","","","","","","","","","","",""
+"","null","html-keyboard-response","130","233112","0.0-7.0-110.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>10","null","","","","","","","","","","",""
+"","null","html-keyboard-response","131","235007","0.0-7.0-111.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>9","null","","","","","","","","","","",""
+"","null","html-keyboard-response","132","236871","0.0-7.0-112.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>8","null","","","","","","","","","","",""
+"","null","html-keyboard-response","133","238255","0.0-7.0-113.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>7","null","","","","","","","","","","",""
+"","null","html-keyboard-response","134","239575","0.0-7.0-114.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>6","null","","","","","","","","","","",""
+"","null","html-keyboard-response","135","241164","0.0-7.0-115.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>5","null","","","","","","","","","","",""
+"","null","html-keyboard-response","136","242753","0.0-7.0-116.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>4","null","","","","","","","","","","",""
+"","null","html-keyboard-response","137","244813","0.0-7.0-117.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>3","null","","","","","","","","","","",""
+"","null","html-keyboard-response","138","246588","0.0-7.0-118.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>2","null","","","","","","","","","","",""
+"","null","html-keyboard-response","139","248486","0.0-7.0-119.0","{""width"":2048,""height"":898}","<p>Your practice session is now over.</p><p>The test session will start in 2 minutes.<p><p>You can use these two minutes to relaxe your eyes.</p><p> <br> </p><p>Seconds remaining:</p><p> <br> </p>1","null","","","","","","","","","","",""
+"","18188","html-keyboard-response","140","266674","0.0-8.0","{""width"":2048,""height"":898}","<p style=""text-align: justify;margin-left: 15%; margin-right:15%""> This is your test session. You will see 36 trials. In each trial two pairs of shapes will appear with one second of pause between them. Your task is to decide which of the two pairs looks more familiar based on the practice session you have just seen. After the second shape-pair a dialog window will appear asking whether the first or the second pair was more familiar. Using the keyboard you should press 1 or 2. <br> Pressing 1 means that the first shape-pair is more familiar. <br> Pressing 2 means that the second shape-pair is more familiar. <br> No other inputs are accepted. <br> It is important that you pay attention to each trial and that you reply to each trial to the best of your knowledge. Always reply either 1 or 2, even if you are unsure. <br><br>Press space bar to begin.<p>"," ","","","","","","","","","","",""
+"","","vsl-grid-scene-snap","141","269568","0.0-9.0-0.0-0.0-0.0","{""width"":2048,""height"":898}","[[0,0,0,0,0],[0,0,0,0,0],[0,0,""img/obj10.png"",0,0],[0,0,0,0,0],[0,0,0,0,0]]","","","","","","","","","","","",""
+"","","vsl-grid-scene-snap","142","273781","0.0-9.0-0.0-0.0-1.0","{""width"":2048,""height"":898}","[[0,0,0,0,0],[0,0,0,0,0],[0,0,""img/obj9.png"",0,0],[0,0,0,0,0],[0,0,0,0,0]]","","","","","","","","","","","",""
+"","null","html-keyboard-response","143","277987","0.0-9.0-0.0-1.0","{""width"":2048,""height"":898}","<p>Was the first (1) or second (2) more familiar?</p><p>Press key (1) or (2)<p>","null","test","1","0","0","1","0","false","","","",""
+"","","vsl-grid-scene-snap","144","282185","0.0-9.0-1.0-0.0-0.0","{""width"":2048,""height"":898}","[[0,0,0,0,0],[0,0,0,0,0],[0,0,""img/obj4.png"",0,0],[0,0,0,0,0],[0,0,0,0,0]]","","","","","","","","","","","",""
+"","","vsl-grid-scene-snap","145","286406","0.0-9.0-1.0-0.0-1.0","{""width"":2048,""height"":898}","[[0,0,0,0,0],[0,0,0,0,0],[0,0,""img/obj7.png"",0,0],[0,0,0,0,0],[0,0,0,0,0]]","","","","","","","","","","","",""
+"","null","html-keyboard-response","146","290390","0.0-9.0-1.0-1.0","{""width"":2048,""height"":898}","<p>Was the first (1) or second (2) more familiar?</p><p>Press key (1) or (2)<p>","null","test","1","1","1","1","0","false","","","",""
+"","23346","survey-text","147","315339","0.0-10.0","{""width"":2048,""height"":898}","","{""Q0"":""1""}","","","","","","","","","","",""
+"","450","survey-text","148","315791","0.0-11.0","{""width"":2048,""height"":898}","","{""Q0"":""1""}","","","","","","","","","","",""
+"","385","survey-text","149","316178","0.0-12.0","{""width"":2048,""height"":898}","","{""Q0"":""1""}","","","","","","","","","","",""
+"","610","survey-text","150","316789","0.0-13.0","{""width"":2048,""height"":898}","","{""Q0"":""1""}","","","","","","","","","","",""
+"true","null","fullscreen","151","318675","0.0-14.0","{""width"":2048,""height"":898}","","","","","","","","","","","","",""
+"","2027","html-button-response","152","320703","0.0-15.0","{""width"":2048,""height"":898}","<p style=""text-align: justify; margin-right: 15%; margin-left: 15%"">  This is the end of the experiment. <br><br>Thank you for your participation! <br><br>If you would like any additional information, please email the experimenter at szabo_beata-tunde@phd.ceu.edu <br><br>Please press the button bellow to be redirected to Prolific to collect your credits. <br>","0","","","","","","","","u8bgm","","[""img/obj5.png"",""img/obj11.png"",""img/obj10.png"",""img/obj4.png"",""img/obj12.png"",""img/obj3.png"",""img/obj8.png"",""img/obj9.png"",""img/obj1.png"",""img/obj6.png"",""img/obj2.png"",""img/obj7.png""]","[{""stimuli"":[[0,""img/obj6.png"",0,0,0],[""img/obj2.png"",""img/obj5.png"",0,0,0],[0,""img/obj7.png"",""img/obj11.png"",0,0],[0,0,0,""img/obj10.png"",0],[0,0,0,0,0]],""image_size"":[150,150],""line_px"":3,""post_trial_gap"":1000},{""stimuli"":[[0,0,""img/obj6.png"",0,0],[0,""img/obj2.png"",""img/obj5.png"",0,0],[0,0,""img/obj7.png"",""img/obj11.png"",0],[0,0,0,0,""img/obj10.png""],[0,0,0,0,0]],""image_size"":[150,150],""line_px"":3,""post_trial_gap"":1000}]"
+
+
+### Gaze Data ###
+timestamp,x,y,xOff,yOff,tracking_state
+1738880588401,620.5829336860206,547.7580529092567,false,false,good
+1738880589903,946.9617976137713,610.315681275678,false,false,good
+1738880591765,1013.1108041602974,486.36146100069334,false,false,good
+1738880593632,892.9850245904111,408.73099441489427,false,false,good
+1738880595531,1010.7397601738629,784.2354319333356,false,false,good
+1738880597390,1580.281504659933,618.3970510625375,false,false,good
+1738880599231,1474.1068156829958,553.9473039008578,false,false,good
+1738880601140,1328.6317374037935,616.0525309590491,false,false,good
+1738880603159,1263.665290677674,370.4015076439993,false,false,good
+1738880605127,302.2589072751166,312.6758367937683,false,false,good
+1738880607106,180.69438136281548,411.9294469910487,true,false,good
+1738880609089,243.48363488239002,624.3075503008553,false,false,good
+1738880611121,259.65449033580194,723.2996379802182,false,false,good
+1738880613040,786.8013223524001,582.8719734660119,false,false,good
+1738880614960,849.0750215393118,550.2613611541185,false,false,good
+1738880616948,1070.7509274620934,367.57141107117315,false,false,good
+1738880618922,1157.542864241481,83.13776631979457,false,true,good
+1738880620817,1033.2113245816126,114.13719360856943,false,false,good
+1738880622750,889.6495440604294,489.2703189450711,false,false,good
+1738880624683,886.491160675607,490.0989451428701,false,false,good
+1738880626642,1004.7527267579524,266.0151277039926,false,false,good
+1738880628826,1069.0104092570914,423.52560135891815,false,false,good
+1738880630737,901.2609494179454,583.0940166430734,false,false,good
+1738880632600,945.7170185015448,412.988347571525,false,false,good
+1738880634494,825.304410820862,574.6424657699097,false,false,good
+1738880636360,917.5024345283146,482.52706856061826,false,false,good
+1738880638234,1004.2814804065431,619.3576060625757,false,false,good
+1738880640097,976.7039829230301,565.6506666211062,false,false,good
+1738880641966,945.7815839558947,614.070117910937,false,false,good
+1738880643845,906.9517008304247,591.2577272744426,false,false,good
+1738880645723,1029.117311263635,636.6980685232924,false,false,good
+1738880647567,831.0193311295643,466.9472788320222,false,false,good
+1738880649727,838.7613715128191,470.81867928393854,false,false,good
+1738880651299,927.5235695116967,546.7445818118674,false,false,problematic
+1738880653222,886.9484887585169,614.6271714276255,false,false,problematic
+1738880654826,777.8152611150364,590.2590249313212,false,false,good
+1738880656530,1025.6060502900668,656.1643075317288,false,false,problematic
+1738880660324,997.0048994320387,400.80816214658967,false,false,face_lost
+1738880663174,1158.273687054418,500.14204987347074,false,false,problematic
+1738880671717,997.9456986352928,482.0851051678649,false,false,face_lost
+1738880673232,1051.7566301981878,515.7796320107018,false,false,good
+1738880678506,867.8644481971799,237.31589175850513,false,false,problematic
+1738880680365,998.8013481218635,262.40925370758157,false,false,good
+1738880682241,907.186192663303,259.18113494779965,false,false,problematic
+1738880684180,800.9304434974697,419.1653338450669,false,false,problematic
+1738880685837,927.762626975054,110.98321112794928,false,false,problematic
+1738880687829,1203.7405225358698,-21.306645115558933,false,true,problematic
+1738880689454,1344.214348784669,-26.772372767435968,false,true,problematic
+1738880691515,1321.4110334546265,500.27940590837034,false,false,problematic
+1738880693754,1081.9697847011828,448.68704833435413,false,false,problematic
+1738880695389,657.3899831928409,511.6244846290484,false,false,good
+1738880697283,524.6104124460863,910.8734470804579,false,true,good
+1738880699012,1059.3362697489447,616.6993128159057,false,false,good
+1738880700906,551.4279579939755,421.7782112247738,false,false,good
+1738880702862,782.4944649653465,523.5153673123967,false,false,good
+1738880704512,709.1320281055633,383.73290190769103,false,false,good
+1738880706427,1044.0082646313463,269.9191609281889,false,false,good
+1738880708478,851.708711529993,197.92229711434047,false,false,good
+1738880710367,637.1303323432862,1089.4173521528514,false,true,good
+1738880712215,520.1181897463803,1138.7002668912812,false,true,good
+1738880714123,589.1255905351603,1181.624363826423,false,true,good
+1738880716029,625.3581486231644,725.1667919218953,false,false,good
+1738880717923,516.3017879877531,921.6643581970976,false,true,good
+1738880719827,477.57220915642876,923.3888482271204,false,true,good
+1738880721702,672.1375830483594,1012.6893511900323,false,true,good
+1738880723588,719.6469024824975,1119.0102553462357,false,true,good
+1738880725487,623.0879180305045,1230.9941521468966,false,true,good
+1738880727355,618.0870728254079,1160.5160211742132,false,true,good
+1738880729271,467.64531209735935,1038.024319347681,false,true,good
+1738880731158,527.3176158226158,460.2260547373358,false,false,good
+1738880733068,283.6964677429416,588.1485828699109,false,false,good
+1738880734952,557.5119007241293,357.3828924169487,false,false,good
+1738880736718,863.1034783354388,446.78442368458724,false,false,good
+1738880738284,935.2790700881982,291.94408224090853,false,false,good
+1738880739988,1098.4501695301954,279.1024469509394,false,false,good
+1738880741636,771.2822745007726,380.6893316919487,false,false,good
+1738880743369,1139.4971968356163,373.6216870428174,false,false,good
+1738880745273,1037.643460527196,1048.0209945581732,false,true,good
+1738880747172,552.186127644554,540.6241792091777,false,false,good
+1738880749070,937.5496827322746,99.9117804521478,false,false,good
+1738880750974,695.3700960795182,245.19987648420806,false,false,good
+1738880752967,920.0841187376737,193.56461961902193,false,false,problematic
+1738880754648,1078.7973972542336,184.80679944947946,false,false,problematic
+1738880756617,1150.48446691302,-18.641761851251218,false,true,good
+1738880758629,961.5787339109736,533.1644333192538,false,false,problematic
+1738880760586,1102.1073788194046,865.3098235210608,false,true,good
+1738880762520,1035.4194055953574,599.4613838444627,false,false,problematic
+1738880764459,807.556262122139,1054.1199740761106,false,true,good
+1738880767953,967.9971557536858,276.30205871746887,false,false,problematic
+1738880770061,685.5925919009243,337.9914047496341,false,false,good
+1738880771980,743.2352749016337,756.481610509063,false,false,good
+1738880773881,781.5949744060633,1011.1288077199488,false,true,good
+1738880775857,672.3953889138985,863.3629796928498,false,true,good
+1738880777760,560.9873645595386,228.4871555599296,false,false,good
+1738880779689,744.7801607676685,435.58738750618096,false,false,problematic
+1738880781563,891.5549418754694,484.72332477681266,false,false,problematic
+1738880783595,858.3923010230749,505.7647637591123,false,false,problematic
+1738880785510,1059.572601027808,541.7904951238246,false,false,problematic
+1738880787399,770.3876598863712,92.00852602201229,false,false,problematic
+1738880789347,627.9611281912702,65.15095664760007,false,true,problematic
+1738880791338,766.1149769555396,339.36514279076204,false,false,problematic
+1738880793246,862.6408970862573,297.29806960495335,false,false,problematic
+1738880795177,899.8246961536385,246.12181705901452,false,false,problematic
+1738880797156,813.1349118308392,339.079599598792,false,false,problematic
+1738880799073,794.7497462171807,505.7539890079828,false,false,problematic
+1738880800994,848.7798012952737,288.7856738155839,false,false,problematic
+1738880802935,1005.7485102083745,541.224171935304,false,false,problematic
+1738880805068,620.6199954622372,424.9292696398698,false,false,problematic
+1738880806986,904.3883825355638,454.20956671986625,false,false,problematic
+1738880808873,937.2375760960972,540.7811437799488,false,false,problematic
+1738880810925,1242.582548711451,802.7930020786623,false,false,problematic
+1738880812844,1087.9908293516717,475.7427673733338,false,false,problematic
+1738880814737,878.4822764942005,480.1269719557255,false,false,problematic
+1738880816601,879.7827383569856,427.0004838164872,false,false,problematic
+1738880818619,716.3030948692472,412.96855938906526,false,false,problematic
+1738880820262,805.8674902835097,848.2616572242317,false,true,problematic
+1738880822154,866.9885556568648,652.9603817567975,false,false,good
+1738880824049,960.8479207652715,292.82607083387893,false,false,good
+1738880825975,730.0377278560567,617.6026908914928,false,false,good
+1738880827901,988.2425166946499,787.9799676662109,false,false,good
+1738880829916,920.4698390026582,721.7312667274211,false,false,good
+1738880831854,929.4718583974366,901.9327640517993,false,true,good
+1738880833772,987.501613301495,905.5573670559925,false,true,good
+1738880835727,940.1943622185223,864.1181894567691,false,true,good
+1738880837774,950.272575872729,793.412621270369,false,false,good
+1738880839678,1035.5843018065991,941.3365595615244,false,true,good
+1738880841598,1100.3396965847555,778.3000102942898,false,false,good
+1738880843517,1010.9388694454422,657.7278808614066,false,false,good
+1738880845450,1131.7871968120344,344.42564851703236,false,false,good
+1738880847394,637.0748661713617,354.83643689778205,false,false,good
+1738880849327,997.1199005986007,489.9050675829495,false,false,good
+1738880851265,859.4118739940636,351.6621157738296,false,false,good
+1738880853202,759.7868526035431,373.66749882501216,false,false,good
+1738880855150,1013.2111048026752,470.8458658748908,false,false,good
+1738880857105,988.1814624007748,838.5234467609719,false,true,good
+1738880859027,1175.7222401764634,517.7887808613715,false,false,good
+1738880860948,792.8262087651037,461.68208863908063,false,false,problematic
+1738880862898,823.5552667692525,421.9041502178275,false,false,problematic
+1738880864855,889.7678443471017,844.9193443274207,false,true,problematic
+1738880866801,978.2523450657438,962.3492047661747,false,true,problematic
+1738880868763,895.4656448998359,1112.7452077904802,false,true,problematic
+1738880870771,842.8983678421772,893.6468320876415,false,true,problematic
+1738880872736,922.3788582753032,871.2062363701742,false,true,problematic
+1738880874682,946.4634922797837,1018.2202474514577,false,true,problematic
+1738880876635,900.2620496700727,833.3257719732634,false,true,problematic
+1738880878594,972.3325076762409,886.0208112012654,false,true,problematic
+1738880880527,975.6279762386285,835.5056877622975,false,true,problematic
+1738880882469,783.7650848230713,1004.9991606795078,false,true,problematic
+1738880884415,758.719603490298,977.5094598277581,false,true,problematic
+1738880886335,827.4868358862116,899.2964296981272,false,true,problematic
+1738880888541,721.5950978643183,1000.6530184769633,false,true,problematic
+1738880890397,595.0279179651102,572.992026276971,false,false,problematic
+1738880892386,945.3880959176358,226.3612962298538,false,false,good
+1738880894372,926.9751542443596,540.8013705404528,false,false,good
+1738880896537,1151.8534001289406,342.71694454044103,false,false,good
+1738880898396,1008.7665885774234,126.75041519534462,false,false,good
+1738880900447,1085.1108746694613,440.8138000130596,false,false,good
