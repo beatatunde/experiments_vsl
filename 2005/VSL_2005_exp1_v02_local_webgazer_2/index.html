@@ -27,7 +27,7 @@
 
 	<script type="text/javascript" src="jspsych-7-pavlovia-2022.1.1.js"></script>
 
-	<script type="text/javascript" src="webgazer.js"></script>
+	<script type="text/javascript" src="webgazer.js"></script> <!-- WG: loads a local instance of WebGazer -->
 </head>
 
 <body></body>
@@ -35,6 +35,7 @@
 
 	// type="text/javascript" src="lib/vendors/jquery-2.2.0.min.js">
 
+	//WG: handles the proper association of WG with a given webcam
 	async function selectWebcam(deviceId) {
 		try {
 			// Stop WebGazer before switching cameras
@@ -88,8 +89,8 @@
 		}
 	}
 
-	// Function to restart WebGazer in case of errors
-	function restartWebGazer(videoElement) {
+	// WG: restarts WG in case of errors
+	function restartWebGazer(videoElement) { //WG
 		console.log("Restarting WebGazer to resolve texture size issue...");
 
 		webgazer.pause();
@@ -103,8 +104,8 @@
 		}, 500);
 	}
 
-
-	function getVideoInputs() {
+	// WG: gets a list of webcams
+	function getVideoInputs() { //WG
 		return navigator.mediaDevices.enumerateDevices()
 			.then(devices => devices.filter(device => device.kind === "videoinput"))
 			.catch(error => {
@@ -113,12 +114,11 @@
 			});
 	}
 
-
-	// Initialize WebGazer
+	// WG: initialization
 	webgazer.setRegression('ridge')
 		.setTracker('TFFacemesh')
-		.showVideo(true)
-		.showPredictionPoints(true)
+		.showVideo(true) // always set to true, as the associated DOM element is needed for prediction state checking (see: getWebgazerTrackingState function); select_webcam_trial's on_finish hides it while keeping the element in DOM
+		.showPredictionPoints(false) //set to false for deployment, true for development
 		.begin();
 
 	/* VSL 1
@@ -153,6 +153,7 @@
 				image_switchboard: image_switchboard,
 				scene_order: scrambled_scene_array
 			});
+			// WG: exports merged jsPsych and gaze data with headers so that only a single data file is produced
 			saveData("experiment_VSL_randID" + randID + ".csv", mergeCSV(jsPsych.data.get().csv(), convertArrayToCSV(gazeBuffer)));
 		}
 	});
@@ -215,8 +216,7 @@
 	var randID = jsPsych.randomization.randomID(5)
 
 
-
-	// Global variable to store viewport dimensions
+	// WG: global variable to store viewport dimensions
 	let viewportDims = { width: null, height: null };
 
 	// enter fullscreen mode
@@ -238,6 +238,7 @@
 		}
 	});
 
+	// WG: sets the Confirm button enabled or disabled at the webcam selector trial based face detection success
 	async function checkFaceDetection() {
 		const confirmButton = document.querySelector('#confirm-button');
 		if (!confirmButton) return; // Ensure the button exists
@@ -259,6 +260,7 @@
 	}
 
 
+	// WG: select the webcam used for gaze tracking
 	var select_webcam_trial = {
 		type: jsPsychHtmlButtonResponse,
 		stimulus: `
@@ -301,53 +303,30 @@
 			}
 		},
 		on_finish: function () {
-			document.getElementById("webgazerVideoContainer").style.display = "none";
-			startGazeCollection();
+			document.getElementById("webgazerVideoContainer").style.display = "none"; // set to "block" or comment out line to keep the video feedback inset visible
+			startGazeCollection(); // starts collection of gaze data to the gazeBuffer array
 		}
 	};
-
-
 	timeline.push(select_webcam_trial);
 
-	var start_calibration_trial = {
-		type: jsPsychHtmlButtonResponse,
-		stimulus: '<p>Click to start calibration!</p>',
-		choices: ['Start Calibration']
-	};
+	// WG: gaze collection parameters
+	let gazeOffThreshold = 0.1; //ratio of the screen ('viewport') considered to be already outside of the target area, if set to 0: whole screen is the target, if set to 0.5: only gaze at the very center pixel of the screen is considered to be on
+	let gazeCollectionSampleTime = 500; //in ms
 
-	// Add the start calibration trial to your timeline
-	timeline.push(start_calibration_trial);
-
-	function getWebgazerTrackingState() {
-		const feedbackBox = document.getElementById("webgazerFaceFeedbackBox");
-
-		if (!feedbackBox) {
-			console.warn("WebGazer feedback box not found.");
-			return "unknown";
-		}
-
-		const borderColor = window.getComputedStyle(feedbackBox).borderColor;
-
-		if (borderColor === "rgb(0, 128, 0)") return "good";         // Green
-		if (borderColor === "rgb(255, 0, 0)") return "problematic";  // Red
-		if (borderColor === "rgb(0, 0, 0)") return "face_lost";      // Black
-
-		return "unknown"; // If color doesn't match expected values
-	}
-
+	// WG: gaze collection variables
+	let gazeTarget = { x: null, y: null } //misc variable used in validation trials, mostly set to the center of the screen
 	let gazeBuffer = []; // Global array to store gaze predictions
-	let gazeCollectionInterval; // Variable to hold the interval ID
+	let gazeCollectionInterval; // Variable to hold the interval ID, not the sampling time!
 
-	let gazeOffThreshold = 0.1;
-	let gazeTarget = { x: null, y: null }
-	const startGazeCollection = async (intervalMs = 500) => {
+	// WG: gaze collection
+	const startGazeCollection = async (intervalMs = gazeCollectionSampleTime) => {
 		// Recursive function to collect gaze predictions at regular intervals
 		console.log("Started collecting gaze data...")
 		const collectGaze = async () => {
 			const gazePrediction = await webgazer.getCurrentPrediction();
 			if (gazePrediction) {
 				gazeBuffer.push({
-					timestamp: Date.now() - jsPsych.getStartTime(),
+					timestamp: Date.now() - jsPsych.getStartTime(), // gaze collection time relative to jsPsych start time -- same time coordinates as in jsPsych
 					x: gazePrediction.x,
 					y: gazePrediction.y,
 					xOff: !(viewportDims.width * gazeOffThreshold < gazePrediction.x && gazePrediction.x < viewportDims.width * (1 - gazeOffThreshold)),
@@ -374,15 +353,48 @@
 		}
 	};
 
-	var n_clicks_required = 7;  // Number of clicks required per dot
-	var click_counts = {};  // Object to track clicks for each dot
+	// WG: check tracking state, returns "good" if the face is fully visible, "problematic" if the face is only partially tracked and "face_lost" if WG cannot detect it at all
+	function getWebgazerTrackingState() {
+		const feedbackBox = document.getElementById("webgazerFaceFeedbackBox");
 
+		if (!feedbackBox) {
+			console.warn("WebGazer feedback box not found.");
+			return "unknown";
+		}
+
+		const borderColor = window.getComputedStyle(feedbackBox).borderColor;
+
+		if (borderColor === "rgb(0, 128, 0)") return "good";         // Green
+		if (borderColor === "rgb(255, 0, 0)") return "problematic";  // Red
+		if (borderColor === "rgb(0, 0, 0)") return "face_lost";      // Black
+
+		return "unknown"; // If color doesn't match expected values
+	};
+
+	// WG: calibration parameters
+	var n_clicks_required = 5;  // Number of clicks required per dot
 	var dot_positions = [
 		{ x: 20, y: 20 }, { x: 50, y: 20 }, { x: 80, y: 20 },
 		{ x: 20, y: 50 }, { x: 50, y: 50 }, { x: 80, y: 50 },
 		{ x: 20, y: 80 }, { x: 50, y: 80 }, { x: 80, y: 80 }
 	];  // Positions as percentages of the viewport width/height
 
+	// WG: instructions trial for WG calibration
+	var start_calibration_trial = {
+		type: jsPsychHtmlButtonResponse,
+		stimulus: `
+					<p>In the next step, you will see red dots appear on the screen.</p>
+					<p>Your task is to click on each dot until it disappears.</p>
+					<p>This process helps calibrate the system.</p>
+					<p>Click the button below to begin.</p>
+    `,
+		choices: ['Start Calibration']
+	};
+	timeline.push(start_calibration_trial);
+
+
+	// WG: calibration trial definition
+	var click_counts = {};
 	const calibration_dot_trial = {
 		type: jsPsychHtmlKeyboardResponse,
 		stimulus: () => {
@@ -446,20 +458,22 @@
 			click_counts = {}; // Reset click counts for the next calibration trial
 		},
 	};
-
-	// Add the calibration trial to your timeline
 	timeline.push(calibration_dot_trial);
 
+	// WG: instructions trial for WG validation
 	var start_validation_trial = {
 		type: jsPsychHtmlButtonResponse,
-		stimulus: '<p>Click to start validation!</p>',
-		choices: ['Start validation']
+		stimulus: `
+					<p>In the next step, you will see green dots appear one at a time on the screen.</p>
+					<p>Your task is to fixate on each dot and keep looking at it until it disappears.</p>
+					<p>This process helps validate the system.</p>
+					<p>Click the button below to begin.</p>
+    `,
+		choices: ['Start Validation']
 	};
-
-	// Add the start validation trial to your timeline
 	timeline.push(start_validation_trial);
 
-	// Validation trial parameters
+	// WG: validation parameters
 	const n = 5; // number of seconds each dot is shown
 	dot_positions = [
 		{ x: 20, y: 20 }, { x: 50, y: 20 }, { x: 80, y: 20 },
@@ -467,7 +481,7 @@
 		{ x: 20, y: 80 }, { x: 50, y: 80 }, { x: 80, y: 80 }
 	];
 
-	// Fisher-Yates shuffle function
+	// WG: utility function used in validation
 	function shuffleArray(array) {
 		for (let i = array.length - 1; i > 0; i--) {
 			const j = Math.floor(Math.random() * (i + 1));
@@ -475,10 +489,9 @@
 		}
 		return array;
 	}
-
 	dot_positions = shuffleArray(dot_positions);
 
-	// Validation trial
+	// WG: validation trial definition
 	const validation_dot_trial = {
 		type: jsPsychHtmlKeyboardResponse,
 		stimulus: `<div id="validation-container" style="position: relative; width: 100vw; height: 100vh;"></div>`,
@@ -525,7 +538,6 @@
 			console.log("Validation dot trial finished.");
 		}
 	};
-
 	timeline.push(validation_dot_trial);
 
 	var welcome_trial = {
@@ -660,7 +672,7 @@
 
 	var scene = [] // I don not need this anymore, for experimental control maybe for storing?
 
-	for (let i = 0; i < 2 /* DEV fam_scenes.length*/; i++) { //fam_scenes.length; i++) {//SHORTEN fam_scenes.length; i++) {
+	for (let i = 0; i < fam_scenes.length; i++) { //fam_scenes.length; i++) {//SHORTEN fam_scenes.length; i++) {
 		var this_scene = [
 			[0, 0, 0, 0, 0],
 			[0, 0, 0, 0, 0],
@@ -864,7 +876,7 @@
 	presentationSwitchBoard = permutedArray
 
 
-	for (let j = 0; j < 2 /* DEV test_scenes.length*/; j++) {//SHORTEN test_scenes.length; j++) {
+	for (let j = 0; j < test_scenes.length; j++) {//SHORTEN test_scenes.length; j++) {
 
 		var this_test_trial = { // contains both test sceneces plus the decision
 			timeline: []
@@ -1056,17 +1068,16 @@
 
 	jsPsych.run(timeline);
 
+	// WG: utility functions to merge gaze data with other jsPsych produced data
 	function convertArrayToCSV(dataArray) {
 		const headers = Object.keys(dataArray[0]).join(","); // Extract column headers
 		const rows = dataArray.map(obj => Object.values(obj).join(",")); // Extract row data
 
 		return [headers, ...rows].join("\n"); // Combine headers and rows
 	}
-
 	function mergeCSV(csv1, csv2, label1 = "Experiment Data", label2 = "Gaze Data") {
 		return `### ${label1} ###\n${csv1}\n\n### ${label2} ###\n${csv2}`;
 	}
-
 
 	function saveData(name, data) {
 		var csvString = data;
