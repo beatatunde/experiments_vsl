@@ -11,8 +11,9 @@
         <script src="jspsych/plugin-survey-html-form.js"></script>
         <script src="jspsych/plugin-survey-text.js"></script>
 
-        <script src="jspsych-vsl-grid-attention-check.js"></script>
+        <script src="jspsych-vsl-grid-attention-check_infinite.js"></script>
         <script src="jspsych-vsl-grid-scene_snap.js"></script>
+		<script src="jspsych-vsl-grid-scene_snap_gridOnly.js"></script>
         <script src="snap.svg.js"></script>
         <script src="detect.js"></script>
 
@@ -25,13 +26,20 @@
         
 		<script type="text/javascript" src="jspsych-7-pavlovia-2022.1.1.js"></script>
 		<style>
-			
 			#jspsych-vsl-grid-scene-snap-canvas {
 			  position: absolute;
 			  top: -45px;
 			  left: -45px;
 			}
 		  </style>
+		<style> 
+		#jspsych-vsl-grid-scene-snap-grid-only-canvas {
+			position: absolute;
+			top: -45px;
+			left: -45px;
+		}
+		</style>
+		
     </head>
     <body></body>
     <script>
@@ -49,13 +57,33 @@ Uses test scene strucutre stored in an array in test_1.js. Same indexing issue a
 */
 
 	// set paramters for all VSL scenes (familiarization and test)
-	var global_image_size = 85; // 150; // 200;
-	var global_line_px = 3;
-	var global_post_trial_gap = 1000;
+	//var global_image_size = 85; // 150; // 200;
+	// window.screen.width = 1440 (marci macbook Air)
+	var image_ratio = 0.06; // rounded (85/1440)
+	var global_image_size = Math.round(image_ratio * window.screen.width);
+	var global_line_px = 1;
+	var global_post_trial_gap = 0 //1000; gridOnly plugin instead
 	var user_browser = (detect.parse(navigator.userAgent)).browser.family;
 
-	
+	// // Calculate top and left offsets dynamically based on image_ratio
+    // var offset = -1 * Math.round(global_image_size / 2); // 0.5 grid size shift
 
+    // // Apply the calculated offset to the canvas elements after the DOM loads
+    // document.addEventListener("DOMContentLoaded", function() {
+    //     var gridCanvas = document.getElementById("jspsych-vsl-grid-scene-snap-canvas");
+    //     var gridOnlyCanvas = document.getElementById("jspsych-vsl-grid-scene-snap-grid-only-canvas");
+		
+    //     if (gridCanvas) {
+	// 		gridCanvas.style.position = "absolute";
+    //         gridCanvas.style.top = offset + "px";
+    //         gridCanvas.style.left = offset + "px";
+    //     }
+    //     if (gridOnlyCanvas) {
+	// 		gridOnlyCanvas.style.position = "absolute";
+    //         gridOnlyCanvas.style.top = offset + "px";
+    //         gridOnlyCanvas.style.left = offset + "px";
+    //     }
+    // });	
 
    	// initialize experiment
 	   var jsPsych = initJsPsych({
@@ -141,7 +169,7 @@ Uses test scene strucutre stored in an array in test_1.js. Same indexing issue a
   		fullscreen_mode: true,
   		post_trial_gap: 1,
 	});
-
+	
     var welcome_trial = {
         type: jsPsychHtmlButtonResponse,
         stimulus: '<p style="text-align: justify;margin-left: 15%; margin-right:15%">You are participating in an experiment at the Vision Lab of the Department of Cognitive Science, Central European University. '+
@@ -296,13 +324,24 @@ Uses test scene strucutre stored in an array in test_1.js. Same indexing issue a
 
 		scene.push(this_scene) // I don not need this anymore, for experimental control maybe for storing?
 
-		var this_trial = {
+		var this_trial_images = {
 				type: jsPsychVslGridSceneSnap, 
     			stimuli: this_scene,
     			image_size: [global_image_size, global_image_size],
     			line_px: global_line_px,
     			post_trial_gap: global_post_trial_gap
 			}
+
+		var this_trial_gridOnly = {
+			type: jsPsychVslGridSceneSnapGridOnly, 
+			image_size: [global_image_size, global_image_size],
+			line_px: global_line_px,
+			post_trial_gap: global_post_trial_gap
+		}
+
+		var this_trial ={
+			timeline: [this_trial_gridOnly, this_trial_images]
+		}
 		scene_array.push(this_trial)
 	};
 
@@ -310,7 +349,7 @@ Uses test scene strucutre stored in an array in test_1.js. Same indexing issue a
 
 
 	var fam_part_1 = {
-		timeline: scrambled_scene_array.slice(0, 48)
+		timeline: scrambled_scene_array.slice(0, 2) //48
 	};
 	var fam_part_2 = {
 		timeline: scrambled_scene_array.slice(48, 96)

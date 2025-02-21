@@ -82,10 +82,10 @@ class VslGridSceneSnapPlugin {
     var nrows = trial.stimuli.length;
     var ncols = trial.stimuli[0].length;
 
-    var nrows_grid = 21
-    var ncols_grid= 21
-    var stimuli_start_row = 2; // Center starting row
-    var stimuli_start_col = 8; // Center starting column
+    var nrows_grid = 20
+    var ncols_grid= 20
+    var stimuli_start_row = 3; // upper left cell starting row for presentation grid
+    var stimuli_start_col = 7; // upper left cell starting col for presentation grid
 
     display_element.innerHTML = "<svg id='jspsych-vsl-grid-scene-snap-canvas' x='0' y='0' width=" + (trial.image_size[0]*nrows_grid) + " height=" + (trial.image_size[1]*ncols_grid) + "></svg>";
 
@@ -98,7 +98,7 @@ class VslGridSceneSnapPlugin {
       for (var col = 0; col < ncols; col++) {
         if (trial.stimuli[row][col] !== 0) {
         var shape = paper.image(trial.stimuli[row][col], trial.image_size[0]*(col+stimuli_start_col), trial.image_size[1]*(row+stimuli_start_row), trial.image_size[0], trial.image_size[1]);
-        debugger;
+        
         };
       };
     };
@@ -114,6 +114,18 @@ class VslGridSceneSnapPlugin {
     var outline = paper.rect(0, 0, trial.image_size[0]*nrows_grid, trial.image_size[1]*ncols_grid).attr({"fill-opacity": 0,  
                                                                                                                            stroke: 'black',
                                                                                                                            strokeWidth: trial.line_px*2});
+
+    // Test presentation grid: Draw a thick-bordered 3x3 grid based on strating col and row
+    var thick_border_x = trial.image_size[0] * stimuli_start_col;
+    var thick_border_y = trial.image_size[1] * stimuli_start_row;
+    var thick_border_w = trial.image_size[0] * 3;
+    var thick_border_h = trial.image_size[1] * 3;
+
+    var thick_border = paper.rect(thick_border_x, thick_border_y, thick_border_w, thick_border_h).attr({
+        "fill-opacity": 0,
+        stroke: 'black',
+        strokeWidth: trial.line_px * 4  // Adjust thickness as needed
+    });
   
   };
 

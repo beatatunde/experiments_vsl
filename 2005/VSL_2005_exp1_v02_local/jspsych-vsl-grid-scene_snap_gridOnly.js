@@ -49,13 +49,6 @@ var jsPsychVslGridSceneSnapGridOnly = (function(jspsych) {
           default: 1,
           description: 'How thick should the grid lines be in pixel.'  
         },
-        grid_size: {
-          type: jspsych.ParameterType.INT,
-          pretty_name: 'Grid size',
-          default: [20,20],
-          description: 'Size of the large grid'
-        },
-       
     },
 }
 
@@ -81,18 +74,29 @@ class VslGridSceneSnapPlugin {
        jsPsych.finishTrial(trial_data);
     }
 
-  
+    // var nrows = trial.stimuli.length;
+    // var ncols = trial.stimuli[0].length;
 
-    var nrows_grid = trial.grid_size[0];
-    var ncols_grid = trial.grid_size[1];
-    
+    var nrows_grid = 20
+    var ncols_grid= 20
+    var stimuli_start_row = 2; // Center starting row
+    var stimuli_start_col = 5; // Center starting column
 
     display_element.innerHTML = "<svg id='jspsych-vsl-grid-scene-snap-grid-only-canvas' x='0' y='0' width=" + (trial.image_size[0]*nrows_grid) + " height=" + (trial.image_size[1]*ncols_grid) + "></svg>";
 
     var paper = Snap("#jspsych-vsl-grid-scene-snap-grid-only-canvas");
 
 
-   
+    // drawing grid and shapes
+    // notice here that the stimuli structure used is order as [row][col] and the snap function uses [x][y], i.e. [col][row]
+    // for (var row = 0; row < nrows; row++) {
+    //     for (var col = 0; col < ncols; col++) {
+    //     if (trial.stimuli[row][col] !== 0) {
+    //     var shape = paper.image(trial.stimuli[row][col], trial.image_size[0]*(col+stimuli_start_col), trial.image_size[1]*(row+stimuli_start_row), trial.image_size[0], trial.image_size[1]);
+    //     debugger;
+    //     };
+    //     };
+    // };
 
     
     for (var row = 0; row < nrows_grid; row++) {
