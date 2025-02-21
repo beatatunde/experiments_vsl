@@ -20,8 +20,8 @@
 
  		<script src="jspsych/plugin-fullscreen.js"></script>
         <link href="jspsych/jspsych.css" rel="stylesheet" type="text/css"></link>
-        <script type="text/javascript" src="familiarization_2005e1_v02.js"></script>
-        <script type="text/javascript" src="test_1.js"></script>
+        <script type="text/javascript" src="familiarization_1_jav_exp1.js"></script>
+        <script type="text/javascript" src="test_1_exp1.js"></script>
 
         
 		<script type="text/javascript" src="jspsych-7-pavlovia-2022.1.1.js"></script>
@@ -294,33 +294,34 @@ Uses test scene strucutre stored in an array in test_1.js. Same indexing issue a
 
 	var word_decode = [
 		[], // because the original file indexes from 1 not 0
-		[0, 1, 1, 1, 2, 2, 2],  // shape ID is minus 1 compared to Matlab version because of indexing
-		[3, 4, 1, -1, 5, 2, -2],
-		[6, 7, 1, 1, 8, 0, 2],
-		[9, 10, -1, 1, 11, 0, 2]
+		[0, 1, 0, 1], // shape ID is minus 1 compared to Matlab version because of indexing
+		[2, 3, 0, 1],
+		[6, 7, 1, 0],
+		[8, 9, 1, 0],
+		[4, 5, -1, 1],
+		[10, 11, 1, 1]
 	];
 
 	var scene = [] // I don not need this anymore, for experimental control maybe for storing?
 
 	for ( let i = 0; i < fam_scenes.length; i++){ //fam_scenes.length; i++) {//SHORTEN fam_scenes.length; i++) {
 		var this_scene = [
-			[0,0,0,0,0],
-			[0,0,0,0,0],
-			[0,0,0,0,0],
-			[0,0,0,0,0],
-			[0,0,0,0,0]
+			[0,0,0],
+			[0,0,0],
+			[0,0,0]
 		];
 
 		this_word = word_decode[fam_scenes[i][2]]; // get first word
-		this_scene[fam_scenes[i][1] ][fam_scenes[i][0] ] = image_switchboard[this_word[0]] // place first letter of first word on its position
-		this_scene[fam_scenes[i][1] + this_word[3] ][fam_scenes[i][0] + this_word[2] ] = image_switchboard[this_word[1]] // place second letter of word in its position
-		this_scene[fam_scenes[i][1] + this_word[6] ][fam_scenes[i][0] + this_word[5] ] = image_switchboard[this_word[4]] // place third letter of word in its position
-
+		this_scene[fam_scenes[i][1] - 1][fam_scenes[i][0] - 1] = image_switchboard[this_word[0]] // place first letter of first word on its position
+		this_scene[fam_scenes[i][1] + this_word[3] - 1][fam_scenes[i][0] + this_word[2] - 1] = image_switchboard[this_word[1]] // place second letter of word in its position
 
 		this_word = word_decode[fam_scenes[i][5]]; // get second word
-		this_scene[fam_scenes[i][4] ][fam_scenes[i][3] ] = image_switchboard[this_word[0]] // place first letter of second word on its position
-		this_scene[fam_scenes[i][4] + this_word[3] ][fam_scenes[i][3] + this_word[2] ] = image_switchboard[this_word[1]] // place second letter of word in its position
-		this_scene[fam_scenes[i][4] + this_word[6] ][fam_scenes[i][3] + this_word[5] ] = image_switchboard[this_word[4]] // place second letter of word in its position
+		this_scene[fam_scenes[i][4] - 1][fam_scenes[i][3] - 1] = image_switchboard[this_word[0]] // place first letter of second word on its position
+		this_scene[fam_scenes[i][4] + this_word[3] - 1][fam_scenes[i][3] + this_word[2] - 1] = image_switchboard[this_word[1]] // place second letter of word in its position
+
+		this_word = word_decode[fam_scenes[i][8]]; // get third word
+		this_scene[fam_scenes[i][7] - 1][fam_scenes[i][6] - 1] = image_switchboard[this_word[0]] // place first letter of third word on its position
+		this_scene[fam_scenes[i][7] + this_word[3] - 1][fam_scenes[i][6] + this_word[2] - 1] = image_switchboard[this_word[1]] // place second letter of word in its position
 
 		scene.push(this_scene) // I don not need this anymore, for experimental control maybe for storing?
 

@@ -54,6 +54,18 @@ var jsPsychVslGridSceneSnap = (function(jspsych) {
           default: 1,
           description: 'How thick should the grid lines be in pixel.'  
         },
+        grid_size: {
+          type: jspsych.ParameterType.INT,
+          pretty_name: 'Grid size',
+          default: [20,20],
+          description: 'Size of the large grid'
+        },
+        stim_scene_start: {
+          type: jspsych.ParameterType.INT,
+          pretty_name: 'Stim scene start',
+          default: [3,7],
+          description: 'Where to start the presentation grid'
+        }
     },
 }
 
@@ -82,10 +94,10 @@ class VslGridSceneSnapPlugin {
     var nrows = trial.stimuli.length;
     var ncols = trial.stimuli[0].length;
 
-    var nrows_grid = 20
-    var ncols_grid= 20
-    var stimuli_start_row = 3; // upper left cell starting row for presentation grid
-    var stimuli_start_col = 7; // upper left cell starting col for presentation grid
+  var nrows_grid = trial.grid_size[0];
+  var ncols_grid = trial.grid_size[1];
+  var stimuli_start_row = trial.stim_scene_start[0]; 
+  var stimuli_start_col = trial.stim_scene_start[1]; 
 
     display_element.innerHTML = "<svg id='jspsych-vsl-grid-scene-snap-canvas' x='0' y='0' width=" + (trial.image_size[0]*nrows_grid) + " height=" + (trial.image_size[1]*ncols_grid) + "></svg>";
 
