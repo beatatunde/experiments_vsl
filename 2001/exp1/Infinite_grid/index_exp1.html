@@ -511,11 +511,13 @@ Uses test scene strucutre stored in an array in test_1.js. Same indexing issue a
 
 		if (pres_order[0] == 1) {
 			this_test_stimuli.timeline.push(true_test_scene)
+			this_test_stimuli.timeline.push(this_trial_gridOnly)
 			this_test_stimuli.timeline.push(foil_test_scene)
 			correct = '1'
 
 		} else {
 			this_test_stimuli.timeline.push(foil_test_scene)
+			this_test_stimuli.timeline.push(this_trial_gridOnly)
 			this_test_stimuli.timeline.push(true_test_scene)
 			correct = '2'
 		}
